@@ -1,10 +1,10 @@
-name: d9-sandbox profile
+name: sandbox profile
 type: profile
-description: 'custom d9-sandbox profile package'
+description: 'custom sandbox profile package'
 core_version_requirement: ^8.8 | ^9.0
 
 distribution:
-  name: d9-sandbox profile
+  name: sandbox profile
   langcode: en
 
 install:

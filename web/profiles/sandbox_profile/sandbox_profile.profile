@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function d9-sandbox_profile_form_install_configure_form_alter(&$form, FormStateInterface $form_state) {
+function sandbox_profile_form_install_configure_form_alter(&$form, FormStateInterface $form_state) {
   // Configure the account information defaults.
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
 
