@@ -1,0 +1,43 @@
+name: Tofu
+type: theme
+base theme: false
+description: 'Theory One Design D8 base theme.'
+package: Core
+core_version_requirement: ^8.8.0 || ^9.0
+
+libraries:
+  - tofu/global
+  - tofu/tabs #part of admin interface
+  - tofu/messages #part of admin interface
+  - tofu/fonts
+  - tofu/a11y-hide-show
+#  - tofu/slick
+
+# Uncomment to override unnecessary js libraries. Example below:
+#libraries-override:
+#  tofu/global:
+#    js:
+#      dist/js/tofu-utilities.js: false
+#      dist/js/xxxxx
+
+ckeditor_stylesheets:
+  - dist/css/ckeditor.css
+
+regions:
+  page_top: 'Page top'
+  header: Header
+  navigation_secondary: 'Navigation secondary'
+  navigation_primary: 'Navigation primary'
+  banner: Banner
+  pre_content: Pre-content
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  post_content: Post-content
+  footer_first: Footer first
+  footer_second: Footer second
+  footer_third: Footer third
+  page_bottom: 'Page bottom'
+
+version: '8.x'
+project: 'tofu'
