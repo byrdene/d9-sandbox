@@ -31,12 +31,14 @@ with our default installation settings and local development files.
     * From the root directory run `scripts/custom-profile.sh zaldomoh NEWNAME`
 6. Run the Drupal installer (ideally on the server where the site will be hosted).
     * If installing on remote server, finish setting up remote repository:
+    `git init`
+    `git add .`
+    `git commit -m "Initial Commit"`
     `git remote add origin https://github.com/byrdene/d9-sandbox.git`
-    `git branch -M main`
-    `git push -u origin main`
-7. If necessary, add any host-specific settings to `sites/default/settings.php`.
-8. After install, you may need to remove or edit the database credentials the installer added to
+    `git push --set-upstream origin master`
+7. After install, you may need to remove or edit the database credentials the installer added to
   `sites/default/settings.php`. 
+8. If necessary, add any host-specific settings to `sites/default/settings.php`.
 9. Import the local config split settings: `drush cim`  
 10. Set up the project's custom theme (the rename utility is required and can be downloaded with homebrew: `brew install rename`):
     * From the root directory, run `scripts/custom-theme.sh zaldomoh NEWNAME`
