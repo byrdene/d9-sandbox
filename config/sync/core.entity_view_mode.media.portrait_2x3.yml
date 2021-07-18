@@ -1,0 +1,12 @@
+uuid: 0e468a3b-076b-4b25-a02a-efbf25c3b319
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: jkvGLaXRmg8ClQu7A5UXhyosPFQ_6Fv8NHCazr3cloo
+id: media.portrait_2x3
+label: 'Portrait (2x3)'
+targetEntityType: media
+cache: true

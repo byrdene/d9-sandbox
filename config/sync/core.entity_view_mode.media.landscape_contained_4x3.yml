@@ -1,0 +1,12 @@
+uuid: ae7802e8-7fb4-454b-b0b1-ee100890309f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: WIC12_8EhtUCckPg7f0RmiZFM_KSgRTFJAqa3h2JyR4
+id: media.landscape_contained_4x3
+label: 'Landscape - Contained (4x3)'
+targetEntityType: media
+cache: true

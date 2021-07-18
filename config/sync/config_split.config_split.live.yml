@@ -1,0 +1,17 @@
+uuid: 6b3d2a04-47c6-4655-9a3f-d06a3a8f6d12
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: irQk3JbkXUFKj5CFNmSSeO0EJ4ea_8YubNUjVaITogI
+id: live
+label: Live
+description: 'This is the Live or Prod environment.'
+folder: ../config/splits/live
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 3

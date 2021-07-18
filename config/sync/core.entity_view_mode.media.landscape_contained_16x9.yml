@@ -1,0 +1,12 @@
+uuid: 10270505-051a-4453-bb0f-d54dd34161a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: SalOWPDMt-mDPiIYJVZuyauMvEjAz868-0Q2xXerWxo
+id: media.landscape_contained_16x9
+label: 'Landscape - Contained (16x9)'
+targetEntityType: media
+cache: true

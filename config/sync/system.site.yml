@@ -1,0 +1,15 @@
+name: 'D9 Sandbox'
+mail: byrdene@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+mail_notification: ''
+_core:
+  default_config_hash: IHpWWIkDQSprhgjf0eggbMD_Jg3fiN7Mr5qlHUalmkY
+uuid: 819354f5-35a2-455d-a614-8bed64b29628

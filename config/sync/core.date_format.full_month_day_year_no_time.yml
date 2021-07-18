@@ -1,0 +1,10 @@
+uuid: c3cbfaea-7fd1-41c0-a981-b34fcbdcedc1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: svz_VS354pwYF8fcnSf-KryA0QHcEdsSUaSOxO4jXj8
+id: full_month_day_year_no_time
+label: 'Full Month, Day, Year - no time'
+locked: false
+pattern: 'F j, Y'

@@ -1,0 +1,16 @@
+uuid: c6f40a0b-166a-41fb-9465-63c1789e0562
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: R-Leiqve7aQzhd3oxBY-Yt8Q_UvoIp5LHzNMe1Ih_PY
+id: basic_page
+label: 'Basic Page'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
