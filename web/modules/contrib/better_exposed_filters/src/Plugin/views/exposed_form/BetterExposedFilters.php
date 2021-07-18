@@ -142,7 +142,7 @@ class BetterExposedFilters extends InputRequired {
     // Initialize options if any sort is exposed.
     // Iterate over each sort and determine if any sorts are exposed.
     $is_sort_exposed = FALSE;
-    /* @var \Drupal\views\Plugin\views\HandlerBase $sort */
+    /** @var \Drupal\views\Plugin\views\HandlerBase $sort */
     foreach ($this->view->display_handler->getHandlers('sort') as $sort) {
       if ($sort->isExposed()) {
         $is_sort_exposed = TRUE;
@@ -160,7 +160,7 @@ class BetterExposedFilters extends InputRequired {
     }
 
     // Go through each exposed filter and set default format.
-    /* @var \Drupal\views\Plugin\views\HandlerBase $filter */
+    /** @var \Drupal\views\Plugin\views\HandlerBase $filter */
     foreach ($this->view->display_handler->getHandlers('filter') as $filter_id => $filter) {
       if (!$filter->isExposed()) {
         continue;
@@ -345,7 +345,7 @@ class BetterExposedFilters extends InputRequired {
 
     // Iterate over each sort and determine if any sorts are exposed.
     $is_sort_exposed = FALSE;
-    /* @var \Drupal\views\Plugin\views\HandlerBase $sort */
+    /** @var \Drupal\views\Plugin\views\HandlerBase $sort */
     foreach ($this->view->display_handler->getHandlers('sort') as $sort) {
       if ($sort->isExposed()) {
         $is_sort_exposed = TRUE;
@@ -487,7 +487,7 @@ class BetterExposedFilters extends InputRequired {
     ];
 
     // Iterate over each filter and add BEF filter options.
-    /* @var \Drupal\views\Plugin\views\HandlerBase $filter */
+    /** @var \Drupal\views\Plugin\views\HandlerBase $filter */
     foreach ($this->view->display_handler->getHandlers('filter') as $filter_id => $filter) {
       if (!$filter->isExposed()) {
         continue;
@@ -501,7 +501,7 @@ class BetterExposedFilters extends InputRequired {
       }
 
       // Alter the list of available widgets for this filter.
-     $this->moduleHandler->alter('better_exposed_filters_display_options', $options, $filter);
+      $this->moduleHandler->alter('better_exposed_filters_display_options', $options, $filter);
 
       // Get a descriptive label for the filter.
       $label = $this->t('Exposed filter @filter', [
@@ -597,7 +597,7 @@ class BetterExposedFilters extends InputRequired {
     }
 
     // Shorthand for all filter handlers in this view.
-    /* @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
+    /** @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
     $filters = $this->view->display_handler->handlers['filter'];
 
     // Iterate over all filter, sort and pager plugins.
@@ -661,7 +661,7 @@ class BetterExposedFilters extends InputRequired {
     $bef_options = &$options['bef'];
 
     // Shorthand for all filter handlers in this view.
-    /* @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
+    /** @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
     $filters = $this->view->display_handler->handlers['filter'];
 
     parent::submitOptionsForm($form, $form_state);
@@ -816,7 +816,7 @@ class BetterExposedFilters extends InputRequired {
      */
 
     // Shorthand for all filter handlers in this view.
-    /* @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
+    /** @var \Drupal\views\Plugin\views\HandlerBase[] $filters */
     $filters = $this->view->display_handler->handlers['filter'];
 
     // Iterate over all exposed filters.
@@ -841,17 +841,120 @@ class BetterExposedFilters extends InputRequired {
     // If our form has no visible filters, hide the submit button.
     $has_visible_filters = !empty(Element::getVisibleChildren($form)) ?: FALSE;
     $form['actions']['submit']['#access'] = $has_visible_filters;
-
-    if (isset($form['actions']['reset'])) {
-      $form['actions']['reset']['#access'] = ($form['actions']['reset']['#access'] ?? TRUE) && $has_visible_filters;
-
-      // Prevent from showing up in \Drupal::request()->query.
-      // See ViewsExposedForm::buildForm() for more details.
-      $form['actions']['reset']['#name'] = 'reset';
-      $form['actions']['reset']['#op'] = 'reset';
-      $form['actions']['reset']['#type'] = 'submit';
-      $form['actions']['reset']['#id'] = Html::getUniqueId('edit-reset-' . $this->view->storage->id());
+    // Never enable a reset button that has already been disabled.
+    if (!isset($form['actions']['reset']['#access']) || $form['actions']['reset']['#access'] === TRUE) {
+      if (isset($form['actions']['reset'])
+        && (!isset($form['actions']['reset']['#access']) || $form['actions']['reset']['#access'] === TRUE)
+      ) {
+        $form['actions']['reset']['#access'] = $has_visible_filters;
+      }
+      if (isset($form['actions']['reset'])) {
+        // Prevent from showing up in \Drupal::request()->query.
+        // See ViewsExposedForm::buildForm() for more details.
+        $form['actions']['reset']['#name'] = 'reset';
+        $form['actions']['reset']['#op'] = 'reset';
+        $form['actions']['reset']['#type'] = 'submit';
+        $form['actions']['reset']['#id'] = Html::getUniqueId('edit-reset-' . $this->view->storage->id());
+      }
     }
+    // Ensure default process/pre_render callbacks are included when a BEF
+    // widget has added their own.
+    foreach (Element::children($form) as $key) {
+      $element = &$form[$key];
+      $this->addDefaultElementInfo($element);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function exposedFormSubmit(&$form, FormStateInterface $form_state, &$exclude) {
+    parent::exposedFormSubmit($form, $form_state, $exclude);
+
+    $triggering_element = $form_state->getTriggeringElement();
+    if ($triggering_element && !empty($triggering_element['#name']) && $triggering_element['#name'] == 'reset') {
+      $this->resetForm($form, $form_state);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function resetForm(&$form, FormStateInterface $form_state) {
+    // _SESSION is not defined for users who are not logged in.
+    // If filters are not overridden, store the 'remember' settings on the
+    // default display. If they are, store them on this display. This way,
+    // multiple displays in the same view can share the same filters and
+    // remember settings.
+    $display_id = ($this->view->display_handler->isDefaulted('filters')) ? 'default' : $this->view->current_display;
+
+    if (isset($_SESSION['views'][$this->view->storage->id()][$display_id])) {
+      unset($_SESSION['views'][$this->view->storage->id()][$display_id]);
+    }
+
+    // Set the form to allow redirect.
+    if (empty($this->view->live_preview) && !$this->request->isXmlHttpRequest()) {
+      $form_state->disableRedirect(FALSE);
+    }
+    else {
+      $form_state->setRebuild();
+      $this->view->setExposedInput([]);
+
+      // Go through each handler and let it generate its exposed widget.
+      // See ViewsExposedForm::buildForm() for more details.
+      foreach ($this->view->display_handler->handlers as $type => $value) {
+        /** @var \Drupal\views\Plugin\views\ViewsHandlerInterface $handler */
+        foreach ($this->view->$type as $id => $handler) {
+          if ($handler->canExpose() && $handler->isExposed()) {
+            // Reset exposed sorts filter elements if they exist.
+            if ($type === 'sort') {
+              foreach (['sort_bef_combine', 'sort_by', 'sort_order'] as $sort_el) {
+                if (!empty($form[$sort_el])) {
+                  $this->request->query->remove($sort_el);
+                  $form_state->setValue($sort_el, NULL);
+                }
+              }
+              continue 2;
+            }
+
+            $handler->value = $handler->options['value'];
+
+            // Grouped exposed filters have their own forms.
+            // Instead of render the standard exposed form, a new Select or
+            // Radio form field is rendered with the available groups.
+            // When an user choose an option the selected value is split
+            // into the operator and value that the item represents.
+            if ($handler->isAGroup()) {
+              $handler->groupForm($form, $form_state);
+              $id = $handler->options['group_info']['identifier'];
+            }
+            else {
+              $handler->buildExposedForm($form, $form_state);
+            }
+            if ($info = $handler->exposedInfo()) {
+              $form['#info']["$type-$id"] = $info;
+            }
+
+            $value_identifier = $handler->options['expose']['identifier'];
+            // Checks if this is a complex value.
+            if (isset($form[$value_identifier]) && Element::children($form[$value_identifier])) {
+              foreach (Element::children($form[$value_identifier]) as $child) {
+                $form_state->setValue([$value_identifier, $child], $form[$value_identifier][$child]['#default_value'] ?? NULL);
+              }
+            }
+            else {
+              $form_state->setValue($value_identifier, $form[$value_identifier]['#default_value'] ?? NULL);
+            }
+
+            // Cleanup query.
+            $this->request->query->remove($value_identifier);
+          }
+        }
+      }
+      $this->view->exposed_data = $form_state->getValues();
+    }
+
+    $form_state->setRedirect('<current>');
   }
 
   /**
@@ -935,99 +1038,6 @@ class BetterExposedFilters extends InputRequired {
       $child = &$element[$key];
       $this->addDefaultElementInfo($child);
     }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function exposedFormSubmit(&$form, FormStateInterface $form_state, &$exclude) {
-    parent::exposedFormSubmit($form, $form_state, $exclude);
-
-    $triggering_element = $form_state->getTriggeringElement();
-    if ($triggering_element && !empty($triggering_element['#name']) && $triggering_element['#name'] == 'reset') {
-      $this->resetForm($form, $form_state);
-    }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function resetForm(&$form, FormStateInterface $form_state) {
-    // _SESSION is not defined for users who are not logged in.
-
-    // If filters are not overridden, store the 'remember' settings on the
-    // default display. If they are, store them on this display. This way,
-    // multiple displays in the same view can share the same filters and
-    // remember settings.
-    $display_id = ($this->view->display_handler->isDefaulted('filters')) ? 'default' : $this->view->current_display;
-
-    if (isset($_SESSION['views'][$this->view->storage->id()][$display_id])) {
-      unset($_SESSION['views'][$this->view->storage->id()][$display_id]);
-    }
-
-    // Set the form to allow redirect.
-    if (empty($this->view->live_preview) && !\Drupal::request()->isXmlHttpRequest()) {
-      $form_state->disableRedirect(FALSE);
-    }
-    else {
-      $form_state->setRebuild();
-      $this->view->setExposedInput([]);
-
-      // Go through each handler and let it generate its exposed widget.
-      // See ViewsExposedForm::buildForm() for more details.
-      foreach ($this->view->display_handler->handlers as $type => $value) {
-        /** @var \Drupal\views\Plugin\views\ViewsHandlerInterface $handler */
-        foreach ($this->view->$type as $id => $handler) {
-          if ($handler->canExpose() && $handler->isExposed()) {
-            // Reset exposed sorts filter elements if they exist.
-            if ($type === 'sort') {
-              foreach (['sort_bef_combine', 'sort_by', 'sort_order'] as $sort_el) {
-                if (!empty($form[$sort_el])) {
-                  $this->request->query->remove($sort_el);
-                  $form_state->setValue($sort_el, NULL);
-                }
-              }
-              continue 2;
-            }
-
-            $handler->value = $handler->options['value'];
-
-            // Grouped exposed filters have their own forms.
-            // Instead of render the standard exposed form, a new Select or
-            // Radio form field is rendered with the available groups.
-            // When an user choose an option the selected value is split
-            // into the operator and value that the item represents.
-            if ($handler->isAGroup()) {
-              $handler->groupForm($form, $form_state);
-              $id = $handler->options['group_info']['identifier'];
-            }
-            else {
-              $handler->buildExposedForm($form, $form_state);
-            }
-            if ($info = $handler->exposedInfo()) {
-              $form['#info']["$type-$id"] = $info;
-            }
-
-            $value_identifier = $handler->options['expose']['identifier'];
-            // Checks if this is a complex value.
-            if (Element::children($form[$value_identifier])) {
-              foreach (Element::children($form[$value_identifier]) as $child) {
-                $form_state->setValue([$value_identifier, $child], $form[$value_identifier][$child]['#default_value'] ?? NULL);
-              }
-            }
-            else {
-              $form_state->setValue($value_identifier, $form[$value_identifier]['#default_value'] ?? NULL);
-            }
-
-            // Cleanup query.
-           $this->request->query->remove($value_identifier);
-          }
-        }
-      }
-      $this->view->exposed_data = $form_state->getValues();
-    }
-
-    $form_state->setRedirect('<current>');
   }
 
 }

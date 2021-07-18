@@ -5,12 +5,15 @@
 
   // Offset for select button on first item
   &--multiple > .dropbutton__item:first-of-type {
+    height: 100%;
     margin-right: 3rem;
     border-right: 1px solid var(--colorGinPrimaryLightActive);
 
     input {
+      color: var(--colorGinPrimary);
       background-color: transparent;
-      border: 1px solid transparent !important;
+      border: 2px solid transparent !important;
+      border-radius: 0 !important;
     }
   }
 
@@ -64,7 +67,7 @@
     position: absolute;
     right: 0;
     list-style: none;
-    padding: 0;
+    padding: .5em;
     margin: 0;
     min-width: 120px;
     background: var(--colorGinLayer3Background);
@@ -87,6 +90,7 @@
   & &__items > .dropbutton__item ~ .dropbutton__item {
     background-color: var(--colorGinBackground);
     border: 0 none;
+    box-shadow: none;
 
     &:first-of-type {
       margin-right: 0;
@@ -95,7 +99,7 @@
     // Mutiple Dropbutton only has one item
     &:first-of-type:last-of-type > * {
       .js .dropbutton--multiple & {
-        border-radius: 2px;
+        border-radius: $borderSmall;
       }
     }
 
@@ -130,7 +134,6 @@
       &:hover, &:active, &:focus {
         color: var(--colorGinAppBackground);
         background: var(--colorGinPrimary);
-        border: 1px solid transparent !important;
       }
     }
   }
@@ -154,7 +157,7 @@
     > a,
     > input,
     > .button {
-      padding: .75em !important;
+      padding: .75em 1em !important;
     }
   }
 
@@ -182,7 +185,17 @@
   }
 }
 
+.js {
+  .dropbutton--multiple .dropbutton__item:first-of-type > * {
+    border-radius: $borderXSmall 0 0 $borderXSmall;
+  }
+}
+
 .js.no-touchevents {
+  .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
+    margin-right: 0;
+  }
+
   .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
     margin-right: 2rem;
   }
@@ -194,11 +207,13 @@
   .dropbutton--small {
     height: 2rem;
     min-height: 2rem;
+    border-radius: $borderSmall;
   }
 
   .dropbutton--extrasmall {
     height: 1.5rem;
     min-height: 1.5rem;
+    border-radius: $borderSmall;
   }
 
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
@@ -207,6 +222,7 @@
 }
 
 // Last item in table
+table tr:nth-last-child(2) td .dropbutton__items,
 table tr:last-of-type td .dropbutton__items {
   bottom: 100%;
 }

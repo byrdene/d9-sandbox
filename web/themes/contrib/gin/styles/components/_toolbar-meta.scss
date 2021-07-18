@@ -128,8 +128,8 @@
             }
           }
 
-          .toolbar-lining {
-            padding-right: 0;
+          .toolbar-lining:not(:empty) {
+            padding: .5rem;
           }
         }
 

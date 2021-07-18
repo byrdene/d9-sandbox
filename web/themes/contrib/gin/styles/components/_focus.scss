@@ -1,7 +1,3 @@
-.page-wrapper a:focus {
-  border-radius: 2px;
-}
-
 .page-wrapper *:focus,
 .ui-dialog *:focus,
 .dropbutton .dropbutton__item > *:focus,
@@ -15,12 +11,15 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
 .form-element.error:hover:focus,
 .form-actions .action-link:focus,
-.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag,
+.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-edit:focus,
+.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus {
+  outline: none;
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 
 .admin-item__link:focus {
-  border-radius: #{$borderSmall / 2};
+  border-radius: #{$borderXSmall / 2};
 }
 
 .claro-details {
