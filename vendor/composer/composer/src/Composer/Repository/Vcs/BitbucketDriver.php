@@ -33,9 +33,9 @@ abstract class BitbucketDriver extends VcsDriver
     protected $cloneHttpsUrl = '';
 
     /**
-     * @var VcsDriver
+     * @var ?VcsDriver
      */
-    protected $fallbackDriver;
+    protected $fallbackDriver = null;
     /** @var string|null if set either git or hg */
     protected $vcsType;
 
@@ -86,7 +86,7 @@ abstract class BitbucketDriver extends VcsDriver
             $this->repository,
             http_build_query(
                 array('fields' => '-project,-owner'),
-                null,
+                '',
                 '&'
             )
         );
@@ -286,7 +286,7 @@ abstract class BitbucketDriver extends VcsDriver
                         'fields' => 'values.name,values.target.hash,next',
                         'sort' => '-target.date',
                     ),
-                    null,
+                    '',
                     '&'
                 )
             );
@@ -330,7 +330,7 @@ abstract class BitbucketDriver extends VcsDriver
                         'fields' => 'values.name,values.target.hash,values.heads,next',
                         'sort' => '-target.date',
                     ),
-                    null,
+                    '',
                     '&'
                 )
             );

@@ -17,6 +17,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessUtils;
 use Symfony\Component\Process\Exception\RuntimeException;
 use React\Promise\Promise;
+use React\Promise\PromiseInterface;
 
 /**
  * @author Robert Schönthal <seroscho@googlemail.com>
@@ -32,12 +33,15 @@ class ProcessExecutor
 
     protected static $timeout = 300;
 
-    protected $captureOutput;
-    protected $errorOutput;
+    /** @var bool */
+    protected $captureOutput = false;
+    /** @var string */
+    protected $errorOutput = '';
+    /** @var ?IOInterface */
     protected $io;
 
     /**
-     * @psalm-var array<int, array<string, mixed>>
+     * @phpstan-var array<int, array<string, mixed>>
      */
     private $jobs = array();
     private $runningJobs = 0;
@@ -110,7 +114,7 @@ class ProcessExecutor
         }
 
         $this->captureOutput = func_num_args() > 3;
-        $this->errorOutput = null;
+        $this->errorOutput = '';
 
         // TODO in v3, commands should be passed in as arrays of cmd + args
         if (method_exists('Symfony\Component\Process\Process', 'fromShellCommandline')) {
@@ -141,9 +145,9 @@ class ProcessExecutor
     /**
      * starts a process on the commandline in async mode
      *
-     * @param  string  $command the command to execute
-     * @param  string  $cwd     the working directory
-     * @return Promise
+     * @param  string           $command the command to execute
+     * @param  string           $cwd     the working directory
+     * @return PromiseInterface
      */
     public function executeAsync($command, $cwd = null)
     {
@@ -250,16 +254,36 @@ class ProcessExecutor
             throw new \RuntimeException('The given CWD for the process does not exist: '.$cwd);
         }
 
-        // TODO in v3, commands should be passed in as arrays of cmd + args
-        if (method_exists('Symfony\Component\Process\Process', 'fromShellCommandline')) {
-            $process = Process::fromShellCommandline($command, $cwd, null, null, static::getTimeout());
-        } else {
-            $process = new Process($command, $cwd, null, null, static::getTimeout());
+        try {
+            // TODO in v3, commands should be passed in as arrays of cmd + args
+            if (method_exists('Symfony\Component\Process\Process', 'fromShellCommandline')) {
+                $process = Process::fromShellCommandline($command, $cwd, null, null, static::getTimeout());
+            } else {
+                $process = new Process($command, $cwd, null, null, static::getTimeout());
+            }
+        } catch (\Exception $e) {
+            call_user_func($job['reject'], $e);
+
+            return;
+        } catch (\Throwable $e) {
+            call_user_func($job['reject'], $e);
+
+            return;
         }
 
         $job['process'] = $process;
 
-        $process->start();
+        try {
+            $process->start();
+        } catch (\Exception $e) {
+            call_user_func($job['reject'], $e);
+
+            return;
+        } catch (\Throwable $e) {
+            call_user_func($job['reject'], $e);
+
+            return;
+        }
     }
 
     public function wait($index = null)
@@ -332,9 +356,9 @@ class ProcessExecutor
      */
     public function splitLines($output)
     {
-        $output = trim($output);
+        $output = trim((string) $output);
 
-        return ((string) $output === '') ? array() : preg_split('{\r?\n}', $output);
+        return $output === '' ? array() : preg_split('{\r?\n}', $output);
     }
 
     /**
@@ -347,6 +371,9 @@ class ProcessExecutor
         return $this->errorOutput;
     }
 
+    /**
+     * @private
+     */
     public function outputHandler($type, $buffer)
     {
         if ($this->captureOutput) {
@@ -366,11 +393,17 @@ class ProcessExecutor
         }
     }
 
+    /**
+     * @return int the timeout in seconds
+     */
     public static function getTimeout()
     {
         return static::$timeout;
     }
 
+    /**
+     * @param int $timeout the timeout in seconds
+     */
     public static function setTimeout($timeout)
     {
         static::$timeout = $timeout;

@@ -147,14 +147,13 @@ if ('disabled' === $getEnvVar('SYMFONY_DEPRECATIONS_HELPER')) {
     putenv('SYMFONY_DEPRECATIONS_HELPER=disabled');
 }
 
-if (false === $COMPOSER = getenv('COMPOSER_BINARY')) {
-    $COMPOSER = file_exists($COMPOSER = $oldPwd.'/composer.phar')
-        || ($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? preg_replace('/[\r\n].*/', '', `where.exe composer.phar 2> NUL`) : `which composer.phar 2> /dev/null`)))
-        || ($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? preg_replace('/[\r\n].*/', '', `where.exe composer 2> NUL`) : `which composer 2> /dev/null`)))
-        || file_exists($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? `git rev-parse --show-toplevel 2> NUL` : `git rev-parse --show-toplevel 2> /dev/null`)).\DIRECTORY_SEPARATOR.'composer.phar')
-        ? ('#!/usr/bin/env php' === file_get_contents($COMPOSER, false, null, 0, 18) ? $PHP : '').' '.escapeshellarg($COMPOSER) // detect shell wrappers by looking at the shebang
-        : 'composer';
-}
+$COMPOSER = ($COMPOSER = getenv('COMPOSER_BINARY'))
+    || file_exists($COMPOSER = $oldPwd.'/composer.phar')
+    || ($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? preg_replace('/[\r\n].*/', '', `where.exe composer.phar 2> NUL`) : `which composer.phar 2> /dev/null`)))
+    || ($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? preg_replace('/[\r\n].*/', '', `where.exe composer 2> NUL`) : `which composer 2> /dev/null`)))
+    || file_exists($COMPOSER = rtrim((string) ('\\' === \DIRECTORY_SEPARATOR ? `git rev-parse --show-toplevel 2> NUL` : `git rev-parse --show-toplevel 2> /dev/null`)).\DIRECTORY_SEPARATOR.'composer.phar')
+    ? ('#!/usr/bin/env php' === file_get_contents($COMPOSER, false, null, 0, 18) ? $PHP : '').' '.escapeshellarg($COMPOSER) // detect shell wrappers by looking at the shebang
+    : 'composer';
 
 $prevCacheDir = getenv('COMPOSER_CACHE_DIR');
 if ($prevCacheDir) {
@@ -225,10 +224,10 @@ if (!file_exists("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit") || $configurationH
     @copy("$PHPUNIT_VERSION_DIR/phpunit.xsd", 'phpunit.xsd');
     chdir("$PHPUNIT_VERSION_DIR");
     if ($SYMFONY_PHPUNIT_REMOVE) {
-        $passthruOrFail("$COMPOSER remove --no-update ".$SYMFONY_PHPUNIT_REMOVE);
+        $passthruOrFail("$COMPOSER remove --no-update --no-interaction ".$SYMFONY_PHPUNIT_REMOVE);
     }
     if ($SYMFONY_PHPUNIT_REQUIRE) {
-        $passthruOrFail("$COMPOSER require --no-update ".$SYMFONY_PHPUNIT_REQUIRE);
+        $passthruOrFail("$COMPOSER require --no-update --no-interaction ".$SYMFONY_PHPUNIT_REQUIRE);
     }
     if (5.1 <= $PHPUNIT_VERSION && $PHPUNIT_VERSION < 5.4) {
         $passthruOrFail("$COMPOSER require --no-update phpunit/phpunit-mock-objects \"~3.1.0\"");

@@ -71,7 +71,7 @@ class Compiler
         }
 
         $phar = new \Phar($pharFile, 0, 'composer.phar');
-        $phar->setSignatureAlgorithm(\Phar::SHA1);
+        $phar->setSignatureAlgorithm(\Phar::SHA512);
 
         $phar->startBuffering();
 
@@ -86,14 +86,16 @@ class Compiler
             ->name('*.php')
             ->notName('Compiler.php')
             ->notName('ClassLoader.php')
+            ->notName('InstalledVersions.php')
             ->in(__DIR__.'/..')
             ->sort($finderSort)
         ;
         foreach ($finder as $file) {
             $this->addFile($phar, $file);
         }
-        // Add ClassLoader separately to make sure it retains the docblocks as it will get copied into projects
+        // Add runtime utilities separately to make sure they retains the docblocks as these will get copied into projects
         $this->addFile($phar, new \SplFileInfo(__DIR__ . '/Autoload/ClassLoader.php'), false);
+        $this->addFile($phar, new \SplFileInfo(__DIR__ . '/InstalledVersions.php'), false);
 
         // Add Composer resources
         $finder = new Finder();
@@ -135,7 +137,7 @@ class Compiler
         foreach ($finder as $file) {
             if (in_array(realpath($file), $extraFiles, true)) {
                 unset($extraFiles[array_search(realpath($file), $extraFiles, true)]);
-            } elseif (!preg_match('{(/LICENSE|\.php)$}', $file)) {
+            } elseif (!preg_match('{([/\\\\]LICENSE|\.php)$}', $file)) {
                 $unexpectedFiles[] = (string) $file;
             }
 
@@ -171,7 +173,7 @@ class Compiler
         // re-sign the phar with reproducible timestamp / signature
         $util = new Timestamps($pharFile);
         $util->updateTimestamps($this->versionDate);
-        $util->save($pharFile, \Phar::SHA1);
+        $util->save($pharFile, \Phar::SHA512);
 
         Linter::lint($pharFile);
     }
