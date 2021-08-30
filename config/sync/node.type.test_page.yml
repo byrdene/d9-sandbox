@@ -1,0 +1,17 @@
+uuid: de71affa-14dd-491b-9f1c-647901e1ab03
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Test Page'
+type: test_page
+description: 'This is to test different fields and widgets and will never be exported as a real content type'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false
