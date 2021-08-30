@@ -1,4 +1,3 @@
-uuid: e083450f-2075-448f-b80d-ee61e49f2042
 langcode: en
 status: true
 dependencies:
@@ -6,8 +5,6 @@ dependencies:
     - field.storage.node.field_main_image
     - media.type.image
     - node.type.page
-_core:
-  default_config_hash: 7n-doX4VzkYhjMNkCqnR0eIds4v89QN_c8GE0ysrew0
 id: node.page.field_main_image
 field_name: field_main_image
 entity_type: node

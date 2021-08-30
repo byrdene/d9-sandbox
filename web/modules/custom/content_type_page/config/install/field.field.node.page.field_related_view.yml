@@ -1,4 +1,3 @@
-uuid: 39fea264-f08e-4946-8a5d-ebfc1cda268a
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - node.type.page
   module:
     - viewfield
-_core:
-  default_config_hash: WivoVYU1r4gy9wLgtWJ2eNhcilmAXq8QmMtlcBFk_80
 id: node.page.field_related_view
 field_name: field_related_view
 entity_type: node
