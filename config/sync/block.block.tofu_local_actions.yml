@@ -1,0 +1,20 @@
+uuid: d09176be-b613-40aa-b541-e7e4d4d349a0
+langcode: en
+status: true
+dependencies:
+  theme:
+    - tofu
+_core:
+  default_config_hash: PffmQ-ABSz5tFjWmVsR7NesunDnEivvopnJnBjl8KNE
+id: tofu_local_actions
+theme: tofu
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }
