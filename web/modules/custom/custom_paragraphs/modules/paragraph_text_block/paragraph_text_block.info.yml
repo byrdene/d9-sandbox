@@ -4,7 +4,7 @@ core_version_requirement: '^8.9 || ^9'
 package: Custom
 description: 'Paragraph bundle for rich text block'
 dependencies:
-  - 'allowed_formats:allowed_formats'
-  - 'drupal:field'
-  - 'drupal:text'
-  - 'paragraphs:paragraphs'
+  - allowed_formats
+  - field
+  - paragraphs
+  - text

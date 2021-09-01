@@ -18,21 +18,19 @@
 
 {%
   set classes = [
-  'section',
-  'section--type-' ~ paragraph.bundle|clean_class,
+  'component',
+  'component--type-' ~ paragraph.bundle|clean_class,
   'component-paragraph',
+  'container',
   'small-width',
   'padded-row',
   custom_class,
 ]
 %}
 
-{# Sets Unique ID for paragraph from Paragraph ID. #}
-{% set paragraph_id = 'component-' ~ paragraph.id.value %}
-
-<section{{ attributes.addClass(classes).setAttribute('id', paragraph_id) }}>
-  <div class="paragraph-wrapper">
-    <div class="paragraph-content">
+<section{{ attributes.addClass(classes) }}>
+  <div class="component-wrapper">
+    <div class="component-content">
       {{ title_suffix }}
 
       {% if component_heading_status %}

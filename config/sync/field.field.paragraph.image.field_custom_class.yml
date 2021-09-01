@@ -1,0 +1,21 @@
+uuid: 7b14fa33-fb8c-4bf6-95e9-bc194653d8f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_class
+    - paragraphs.paragraphs_type.image
+_core:
+  default_config_hash: jt9c2jzWv-OepPp7iL3UxAz4EU9LLF-Ll9imsaFgSUA
+id: paragraph.image.field_custom_class
+field_name: field_custom_class
+entity_type: paragraph
+bundle: image
+label: 'Custom Class(es)'
+description: 'Separate multiple class names with a single space. E.g. class1 class2 class3'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

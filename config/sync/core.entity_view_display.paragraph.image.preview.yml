@@ -1,0 +1,33 @@
+uuid: ebd493ec-d107-48fd-804d-246ae47623ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.image.field_caption
+    - field.field.paragraph.image.field_custom_class
+    - field.field.paragraph.image.field_heading
+    - field.field.paragraph.image.field_heading_status
+    - field.field.paragraph.image.field_image
+    - paragraphs.paragraphs_type.image
+_core:
+  default_config_hash: c0aSxyzMR9kNRhF993OrOOT30typqcfIwsvMBUzcogU
+id: paragraph.image.preview
+targetEntityType: paragraph
+bundle: image
+mode: preview
+content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_caption: true
+  field_custom_class: true
+  field_heading_status: true
+  field_image: true
+  search_api_excerpt: true

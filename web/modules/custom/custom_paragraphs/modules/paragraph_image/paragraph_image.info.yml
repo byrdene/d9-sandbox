@@ -1,0 +1,13 @@
+name: 'Paragraph - Image'
+description: 'Paragraph bundle for single images'
+type: module
+package: Custom
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - allowed_formats
+  - field
+  - media
+  - media_library
+  - paragraph_text_block
+  - paragraphs
+  - text

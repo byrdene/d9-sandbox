@@ -1,0 +1,21 @@
+uuid: aa633b61-0be7-46c9-86df-58138b26c510
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.image
+_core:
+  default_config_hash: AeicN7AAPR5Xc2ZcHnboJKPYpK5xoK9jUds8KdIhvsE
+id: paragraph.image.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: image
+label: Heading
+description: 'The component''s <strong>Heading</strong> can display on the page as a design element OR just be used for editorial reference in the edit form. To restrict to editorial reference, check the "Don''t show heading on page" checkbox below.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

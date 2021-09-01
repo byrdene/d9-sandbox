@@ -1,0 +1,22 @@
+uuid: cf0ade8c-c273-4f1e-9704-01ca03ddd0f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: FXYp18nlJ_1y7S5oogXH-KDqIAwSiMv0E4tfnpgIOZw
+id: paragraph.field_tile_item
+field_name: field_tile_item
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

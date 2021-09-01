@@ -71,7 +71,9 @@ module:
   node: 0
   options: 0
   page_cache: 0
+  paragraph_image: 0
   paragraph_text_block: 0
+  paragraph_tiles: 0
   path: 0
   path_alias: 0
   project_admin: 0

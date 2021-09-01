@@ -1,0 +1,19 @@
+uuid: 2d37da63-e890-46ac-8512-384499edc96f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.tiles
+id: paragraph.tiles.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: tiles
+label: Heading
+description: 'The component''s <strong>Heading</strong> can display on the page as a design element OR just be used for editorial reference in the edit form. To restrict to editorial reference, check the "Don''t show heading on page" checkbox below.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

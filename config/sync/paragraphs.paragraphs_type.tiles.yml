@@ -1,0 +1,12 @@
+uuid: d6289543-2577-4c6a-a3d5-9e2db86819a0
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kVAktqNPCzAvC3H0jfOvdieBUdKzeq5ECbngekYlje0
+id: tiles
+label: 'Media Tiles'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

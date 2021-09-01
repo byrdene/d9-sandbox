@@ -1,0 +1,10 @@
+uuid: 01ccc2b7-91ca-45e5-9262-877932436013
+langcode: en
+status: true
+dependencies: {  }
+id: tiles_item
+label: 'Media Tile'
+icon_uuid: null
+icon_default: null
+description: 'Consists of one media element and one text element'
+behavior_plugins: {  }
