@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_heading
-    - paragraphs.paragraphs_type.tiles
-id: paragraph.tiles.field_heading
-field_name: field_heading
+    - field.storage.paragraph.field_item_heading
+    - paragraphs.paragraphs_type.tiles_item
+id: paragraph.tiles_item.field_item_heading
+field_name: field_item_heading
 entity_type: paragraph
-bundle: tiles
+bundle: tiles_item
 label: Heading
 description: ''
 required: true
