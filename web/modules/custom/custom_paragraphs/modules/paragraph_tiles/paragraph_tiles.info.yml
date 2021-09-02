@@ -6,6 +6,7 @@ description: 'Paragraph bundle for media tiles (image/video plus text)'
 dependencies:
   - allowed_formats
   - field
+  - link
   - media
   - media_library
   - paragraph_text_block
@@ -13,3 +14,4 @@ dependencies:
   - paragraphs
   - text
   - field_group
+  - entity_reference_revisions

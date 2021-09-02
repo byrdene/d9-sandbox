@@ -8,4 +8,14 @@ id: site_admin
 label: 'Site Admin'
 weight: 3
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access administration pages'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'administer main menu items'
+  - 'create media'
+  - 'create test_page content'
+  - 'edit any test_page content'
+  - 'update any media'
+  - 'view own unpublished media'
+  - 'view the administration theme'
