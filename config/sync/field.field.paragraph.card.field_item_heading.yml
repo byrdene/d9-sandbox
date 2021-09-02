@@ -1,0 +1,21 @@
+uuid: c1cfa17e-e902-445a-a4b2-9e9094ade8bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_item_heading
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: sE_QqagrzsZWmCQkWK2DYFY7rLeY-F1OoYES5MpLbp4
+id: paragraph.card.field_item_heading
+field_name: field_item_heading
+entity_type: paragraph
+bundle: card
+label: Heading
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

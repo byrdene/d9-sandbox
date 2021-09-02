@@ -1,0 +1,12 @@
+uuid: 5e637032-50be-4634-9fa3-b0164c82d75a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GqZRRBQBgyyMP1dCC-qaEyV3OZP8RzGbvoegLlN0mXg
+id: card_deck
+label: 'Card Deck'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

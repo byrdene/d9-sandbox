@@ -1,0 +1,21 @@
+uuid: fcd8762a-4d57-4477-9ec2-c5f78c558e71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_class
+    - paragraphs.paragraphs_type.card_deck
+_core:
+  default_config_hash: o6xvIFyxwTKpTvhNchYCVT-mKsYmQxjoC_L4PWZBP3E
+id: paragraph.card_deck.field_custom_class
+field_name: field_custom_class
+entity_type: paragraph
+bundle: card_deck
+label: 'Custom Class(es)'
+description: 'Separate multiple class names with a single space. E.g. class1 class2 class3'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

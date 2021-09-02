@@ -1,0 +1,12 @@
+uuid: 5b429d60-2d3b-426e-b5eb-fff1de7422bb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 8blrUlkJhAt4XA46oMOjwOxbwwIS7glbEM--A0ADMj4
+id: card
+label: Card
+icon_uuid: null
+icon_default: null
+description: 'Consists of one set of image, heading, description, etc.'
+behavior_plugins: {  }

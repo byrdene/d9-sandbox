@@ -1,0 +1,40 @@
+uuid: e4682111-fdfc-4a31-8021-21fdd4d13fd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_deck.field_card
+    - field.field.paragraph.card_deck.field_custom_class
+    - field.field.paragraph.card_deck.field_heading
+    - field.field.paragraph.card_deck.field_heading_status
+    - paragraphs.paragraphs_type.card_deck
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 3niHePo7xBu-XdFRcZ45Lsay8Zmmv20vSJDf5d7haaE
+id: paragraph.card_deck.default
+targetEntityType: paragraph
+bundle: card_deck
+mode: default
+content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_custom_class: true
+  field_heading_status: true
+  search_api_excerpt: true

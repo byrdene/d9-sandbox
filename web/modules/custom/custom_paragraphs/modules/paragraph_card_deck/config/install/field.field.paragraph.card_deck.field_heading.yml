@@ -1,20 +1,17 @@
-uuid: f29c2b6a-670d-4296-bf56-d3bac39d3580
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_heading
-    - paragraphs.paragraphs_type.rich_text
-_core:
-  default_config_hash: hMg-lDr8QazM3Bksdc_KBjjxVOfjp-YAUpNmgLB68UI
-id: paragraph.rich_text.field_heading
+    - paragraphs.paragraphs_type.card_deck
+id: paragraph.card_deck.field_heading
 field_name: field_heading
 entity_type: paragraph
-bundle: rich_text
+bundle: card_deck
 label: Heading
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

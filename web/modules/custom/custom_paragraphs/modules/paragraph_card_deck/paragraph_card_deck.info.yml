@@ -1,0 +1,13 @@
+name: 'Paragraph - Card Deck'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - allowed_formats
+  - content_type_page
+  - entity_reference_revisions
+  - field
+  - field_group
+  - media_library
+  - paragraph_tiles
+  - paragraphs
+  - text

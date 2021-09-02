@@ -6,12 +6,13 @@ dependencies:
     - field.storage.paragraph.field_heading
     - paragraphs.paragraphs_type.image
 _core:
-  default_config_hash: AeicN7AAPR5Xc2ZcHnboJKPYpK5xoK9jUds8KdIhvsE
+  default_config_hash: 54S4AYNIEGne9E6iU-GpqdXg_q31NWEd7arK2oi0U1M
 id: paragraph.image.field_heading
 field_name: field_heading
 entity_type: paragraph
 bundle: image
 label: Heading
+description: ''
 required: true
 translatable: true
 default_value: {  }
