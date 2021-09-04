@@ -1,12 +1,13 @@
-name: 'Paragraph - Card Deck'
+name: 'Paragraph - Quote'
+description: 'Paragraph bundle for quotes or testimonials'
 type: module
 core_version_requirement: '^8.9 || ^9'
 dependencies:
   - allowed_formats
-  - entity_reference_revisions
   - field
-  - field_group
+  - media
   - media_library
+  - paragraph_text_block
   - paragraph_tiles
   - paragraphs
   - text
