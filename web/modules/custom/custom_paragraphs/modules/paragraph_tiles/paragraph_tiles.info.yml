@@ -9,8 +9,6 @@ dependencies:
   - link
   - media
   - media_library
-  - paragraph_text_block
-  - paragraph_image
   - paragraphs
   - text
   - field_group

@@ -8,6 +8,5 @@ dependencies:
   - field
   - media
   - media_library
-  - paragraph_text_block
   - paragraphs
   - text

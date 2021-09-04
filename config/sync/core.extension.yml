@@ -73,6 +73,7 @@ module:
   page_cache: 0
   paragraph_card_deck: 0
   paragraph_image: 0
+  paragraph_quote: 0
   paragraph_text_block: 0
   paragraph_tiles: 0
   path: 0
