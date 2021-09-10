@@ -10,7 +10,7 @@ libraries:
   - tofu/tabs #part of admin interface
   - tofu/messages #part of admin interface
   - tofu/fonts
-  - tofu/a11y-hide-show
+#  - tofu/a11y-hide-show
 #  - tofu/slick
 
 # Uncomment to override unnecessary js libraries. Example below:

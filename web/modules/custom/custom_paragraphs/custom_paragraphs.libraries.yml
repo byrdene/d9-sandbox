@@ -3,3 +3,11 @@ overrides:
   css:
     theme:
       css/admin.css: {}
+
+slick:
+  version: VERSION
+  js:
+    js/plugins/slick/slick.js: {}
+    js/slick-init.js: {}
+  dependencies:
+    - core/jquery

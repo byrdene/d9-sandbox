@@ -1,0 +1,12 @@
+uuid: ff713ca6-be0b-4359-a290-cdc619fb9ce4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: e0pdv1HlHjPo04Ks6pk-8sepIyhR19ERACnSXhMf67s
+id: gallery_carousel
+label: 'Gallery Carousel'
+icon_uuid: null
+icon_default: null
+description: 'A carousel of images, one image at a time'
+behavior_plugins: {  }

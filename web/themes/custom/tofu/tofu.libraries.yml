@@ -87,7 +87,7 @@ collapsed-content:
 slick:
   version: VERSION
   js:
-    dist/js/contrib/slick.js: {}
+    assets/js/plugin/slick/slick.js: {}
     dist/js/custom/tofu-carousel.js: {}
   dependencies:
     - core/jquery
