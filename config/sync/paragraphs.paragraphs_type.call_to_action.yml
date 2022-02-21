@@ -1,0 +1,10 @@
+uuid: a2f88ecf-91ac-48ff-8405-e1b7ad85fa2c
+langcode: en
+status: true
+dependencies: {  }
+id: call_to_action
+label: 'Call to Action'
+icon_uuid: null
+icon_default: null
+description: 'A basic text field with an optional button'
+behavior_plugins: {  }

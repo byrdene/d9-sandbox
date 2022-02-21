@@ -13,9 +13,9 @@
   .caption-wrapper {
     display: block;
     @extend %caption;
-    padding: $gutter;
+    padding: $gutter $gutter 0 $gutter;
     margin: 0;
-    // // uncomment below for caption overlays
+    // // uncomment below for caption overlays and adjsut above padding
     //background-color: $primary-color;
     //background-color: $black;
     //color: $white;

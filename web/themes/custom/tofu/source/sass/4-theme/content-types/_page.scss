@@ -3,8 +3,12 @@
 // ==========================================================================
 
 .node--type-page {
+  .content-wrapper {
+    & + .views-element-container {
+      margin-top: $gutter*2;
+    }
+  }
   // default view mode styles
-
   &.node--view-mode-full {}
   &.node--view-mode-teaser {}
   &.node--view-mode-teaser-small {}

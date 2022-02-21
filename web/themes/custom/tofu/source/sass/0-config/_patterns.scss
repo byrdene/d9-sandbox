@@ -67,9 +67,9 @@
 
 %arrow-link-tail {
   display: inline-block;
-  color: $black;
+  color: $action-color;
   position: relative;
-  font-weight: inherit;
+  @include font-weight(bold);
   text-transform: none;
   text-decoration: none;
   margin-right: .5em;
@@ -89,9 +89,9 @@
   }
   &:hover,
   &:active {
-    color: $black;
+    color: $primary-color;
     text-decoration: none;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid $primary-color;
     &:after {
       padding-left: .5em;
     }

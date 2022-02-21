@@ -1,0 +1,29 @@
+// ==========================================================================
+//   PARAGRAPHS - Tiles (includind Tiles Item bundle)
+// ==========================================================================
+
+.component--type-call-to-action{
+  .cta-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .text-wrapper {
+      text-align: center;
+      & + .button-wrapper {
+        text-align: center;
+        margin-top: $gutter;
+      }
+    }
+    @include bp(small, up) {
+      flex-direction: row;
+      align-items: center;
+      .text-wrapper {
+        text-align: center;
+        & + .button-wrapper {
+          margin-top: 0;
+          margin-left: $gutter;
+        }
+      }
+    }
+  }
+}
