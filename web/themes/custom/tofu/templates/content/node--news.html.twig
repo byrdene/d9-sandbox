@@ -1,0 +1,24 @@
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isSticky() ? 'node--sticky',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+] %}
+
+<section {{ attributes.addClass(classes)}}>
+
+  <div class="page-title-wrapper bg__ice container small-width vertical-flow">
+    <h1{{ title_attributes }} class="page-title padded-row">{{ node.label }}</h1>
+  </div>
+
+  <div class="breadcrumb-wrapper container padded-row small-width margin-bottom">
+    {{ drupal_breadcrumb() }}
+  </div>
+
+  {% if content.body|render %}
+    <div class="content-wrapper container padded-row small-width vertical-flow">
+      {{ content.body }}
+    </div>
+  {% endif %}
+
+</section>

@@ -1,7 +1,15 @@
 uuid: ff5bf79c-32b9-4c1e-84c9-6ac4afc4c42a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.test_page
+  module:
+    - media
+    - menu_admin_per_menu
+    - node
+    - system
+    - toolbar
 _core:
   default_config_hash: uAKrmoZ0xL8nAOsHY74PdWfvarVcgF2ed5jbTXe7yfI
 id: site_admin

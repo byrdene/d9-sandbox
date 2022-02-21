@@ -1,0 +1,260 @@
+
+// General container level styles and resets
+.layout-container {
+  position: relative;
+  overflow-x: hidden; //help eliminate horizontal scrolling with animation effects
+  div,
+  section {
+    position: relative;
+    @include clearfix;
+  }
+}
+
+.field,
+.block {
+  position: relative;
+  @include clearfix;
+}
+
+.container {
+  @include center-block;
+}
+
+// Widths
+.full-width {
+  width: 100%;
+  max-width: none;
+}
+
+.wide-width {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.page-width {
+  width: 100%;
+  max-width: $page-width;
+}
+
+.medium-width {
+  width: 100%;
+  max-width: $content-width;
+}
+
+.small-width {
+  width: 100%;
+  max-width: $body-width;
+}
+
+.x-small-width {
+  width: 100%;
+  max-width: 640px;
+}
+
+
+// Gutters
+.padded-row {
+  padding: 0 $gutter;
+  @include bp(medium, up) {
+    padding: 0 $gutter*2;
+  }
+}
+
+.padded-row-small {
+  padding: 0 $gutter;
+  @include bp(medium, up) {
+    padding: 0 $gutter;
+  }
+}
+
+.padded-column {
+  padding: $gutter 0;
+  @include bp(medium, up) {
+    padding: $gutter*2 0;
+  }
+}
+
+.padded {
+  padding: $gutter;
+  @include bp(medium, up) {
+    padding: $gutter*2;
+  }
+}
+
+//.padded-column { //used mostly for outermost containers that are not one item in many
+//  padding: $gutter/2 0 $gutter*3 0;
+//  @include bp(medium, up) {
+//    padding: $gutter*3 0 $gutter*4 0;
+//  }
+//}
+
+.margin-top {
+  margin-top: $gutter;
+  @include bp(medium, up) {
+    margin-top: $gutter*2;
+  }
+}
+
+.margin-top-small {
+  margin-top: $gutter;
+}
+
+.margin-bottom {
+  margin-bottom: $gutter;
+  @include bp(medium, up) {
+    margin-bottom: $gutter*2;
+  }
+}
+
+.margin-bottom-small {
+  margin-bottom: $gutter;
+}
+
+.vertical-flow {
+  & + .vertical-flow {
+    @include vertical-flow($mobile: $gutter, $desktop: $gutter*2);
+  }
+}
+
+.vertical-flow-large {
+  & + .vertical-flow-large {
+    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*3);
+  }
+}
+
+.vertical-flow-small {
+  & + .vertical-flow-small {
+    @include vertical-flow($mobile: $gutter/2, $desktop: $gutter);
+  }
+}
+
+.vertical-flow-x-small {
+  & + .vertical-flow-x-small {
+    @include vertical-flow($mobile: $gutter/2, $desktop: $gutter/2);
+  }
+}
+
+.section {
+  & + .section {
+    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*2);
+  }
+}
+
+.component {
+  & + .component {
+    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*2);
+  }
+}
+
+// Grid layouts
+
+// Two column grids. Outer class needs to be applied on the container
+// "grid-display-item" class needs to be applied to each grid item
+.two-col-grid {
+  .grid-display-item {
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: $gutter;
+    @include bp(small, up) {
+      float: left;
+      &:nth-of-type(2n+1) { // First item (1st in row of 2)
+        clear: left;
+        width: 48%;
+        margin: 0 2% $gutter 0;
+      }
+      &:nth-of-type(2n+2) { // Last item (2nd in row of 2)
+        width: 48%;
+        margin: 0 0 $gutter 2%;
+      }
+    }
+  }
+}
+
+// Three column grids. Outer class needs to be applied on the container
+// "grid-display-item" class needs to be applied to each grid item
+.three-col-grid {
+  .grid-display-item {
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: $gutter;
+    @include bp(small, up) {
+      float: left;
+      &:nth-of-type(2n+1) { // First item (1st in row of 2)
+        clear: left;
+        width: 49%;
+        margin: 0 1% $gutter 0;
+      }
+      &:nth-of-type(2n+2) { // Middle item (2nd in row of 2)
+        width: 49%;
+        margin: 0 0 $gutter 1%;
+      }
+    }
+    @include bp(medium, up) {
+      float: left;
+      &:nth-of-type(2n+1) {
+        clear: none; // reset from previous breakpoint
+      }
+      &:nth-of-type(3n+1) { // First item (1st in row of 3)
+        clear: left;
+        width: 32%;
+        margin: 0 1% $gutter 0;
+      }
+      &:nth-of-type(3n+2) { // Middle item (2nd in row of 3)
+        width: 32%;
+        margin: 0 1% $gutter 1%;
+      }
+      &:nth-of-type(3n+3) { // Last item (3rd in row of 3)
+        width: 32%;
+        margin: 0 0 $gutter 1%;
+      }
+    }
+  }
+}
+
+// Four column grids. Outer class needs to be applied on the container
+// "grid-display-item" class needs to be applied to each grid item
+.four-col-grid {
+  .grid-display-item {
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: $gutter;
+    @include bp(small, up) {
+      float: left;
+      &:nth-of-type(2n+1) { // First item (1st in row of 2)
+        clear: left;
+        width: 49%;
+        margin: 0 1% $gutter 0;
+      }
+      &:nth-of-type(2n+2) { // Middle item (2nd in row of 2)
+        width: 49%;
+        margin: 0 0 $gutter 1%;
+      }
+    }
+    @include bp(medium, up) {
+      float: left;
+      &:nth-of-type(2n+1) {
+        clear: none; // reset from previous breakpoint
+      }
+      &:nth-of-type(4n+1) { // First item (1st in row of 4)
+        clear: left;
+        width: 23.5%;
+        margin: 0 1% $gutter 0;
+      }
+      &:nth-of-type(4n+2) { // Second item (2nd in row of 4)
+        width: 23.5%;
+        margin: 0 1% $gutter 1%;
+      }
+      &:nth-of-type(4n+3) { // Third item (3rd in row of 4)
+        width: 23.5%;
+        margin: 0 1% $gutter 1%;
+      }
+      &:nth-of-type(4n) { // Last item (4th in row of 4)
+        width: 23.5%;
+        margin: 0 0 $gutter 1%;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for the centerstage structure of a single Drupal page.
+ * Default theme implementation for the structure of a single Drupal page.
  *
  * Variables:
  * - logged_in: A flag indicating if user is logged in.
@@ -52,6 +52,7 @@
 <head>
   <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
+    {% include '@tofu/includes/preload.twig' %}
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
@@ -66,6 +67,13 @@
 {{ page }}
 {{ page_bottom }}
 <js-bottom-placeholder token="{{ placeholder_token }}">
+
+{#  <script>#}
+{#      AOS.init({#}
+{#          disable: 'phone'#}
+{#      });#}
+{#  </script>#}
+
 </body>
 </html>
 

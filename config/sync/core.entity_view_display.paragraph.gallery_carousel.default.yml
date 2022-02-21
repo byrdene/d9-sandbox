@@ -1,4 +1,4 @@
-uuid: 19fde434-4b90-4672-a368-bb64e66a8f2d
+uuid: c3b752ca-df43-40a3-afd1-0a04803e3ba6
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.gallery_carousel.field_heading
     - field.field.paragraph.gallery_carousel.field_heading_status
     - paragraphs.paragraphs_type.gallery_carousel
+_core:
+  default_config_hash: HK3ioG0gHotOcOmVjjYg3QIWC0kdWvZdhOnumg34qIg
 id: paragraph.gallery_carousel.default
 targetEntityType: paragraph
 bundle: gallery_carousel
@@ -15,20 +17,20 @@ mode: default
 content:
   field_gallery_images:
     type: entity_reference_entity_view
-    weight: 1
     label: hidden
     settings:
       view_mode: landscape_full_width_16x9
       link: false
     third_party_settings: {  }
+    weight: 1
     region: content
   field_heading:
-    weight: 0
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: content
 hidden:
   field_custom_class: true

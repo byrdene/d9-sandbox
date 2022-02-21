@@ -1,6 +1,27 @@
+.wrapper__menu--secondary,
 .menu--secondary {
-  display: none;
-  @include bp($main-nav, up) {
+
+  // mobile menu only
+  @include bp($desktop-nav, down) {
+    margin-top: $gutter;
+    ul.menu {
+      li {
+        display: block;
+        a {
+          color: $white;
+          @include font-size(14px);
+          padding: $gutter/4 $gutter;
+          text-decoration: none;
+          &:hover,
+          &:focus {
+            color: rgba(255,255,255,.8);
+          }
+        }
+      }
+    }
+  }
+
+@include bp($desktop-nav, up) {
     display: block;
     float:right;
     ul.menu {

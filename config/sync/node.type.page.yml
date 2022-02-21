@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: 0G-_BUZv8dauTIp-NAm1sNtocvyl87iuiEsLSn1C_bI
-name: Page
+name: 'Basic Page'
 type: page
 description: ''
 help: ''

@@ -1,6 +1,7 @@
 name: 'Page Content Type'
 description: 'Provides Page content type and related configuration (no paragraph fields). '
 type: module
+package: Custom
 core_version_requirement: '^8.9 || ^9'
 dependencies:
   - allowed_formats

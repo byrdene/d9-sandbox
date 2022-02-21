@@ -23,7 +23,7 @@ article {
   }
   &.align-left {
     float: none;
-    @include bp($sidebar, up) {
+    @include bp(small, up) {
       float: left;
       margin: $gutter/2 $gutter $gutter 0;
       max-width: 35%;
@@ -31,7 +31,7 @@ article {
   }
   &.align-right {
     float: none;
-    @include bp($sidebar, up) {
+    @include bp(small, up) {
       margin: $gutter/2 0 $gutter $gutter;
       float: right;
       max-width: 35%;
@@ -53,7 +53,7 @@ caption {
 .field--type-image {
   a {
     &:focus {
-      outline-offset: 5px; // hard to see without an offset
+      @include focus-outline($offset: 5px); // hard to see without an offset
     }
   }
 }
@@ -147,7 +147,7 @@ caption {
 
 }
 
-// aspect ratios for media view modes
+// aspect ratios for media view modes (img and srcset approach to responsive images)
 .media--view-mode-square {
   @include fluid-aspect-ratio(1 1);
 }
@@ -161,3 +161,67 @@ caption {
 .media--view-mode-landscape-contained-4x3 {
   @include fluid-aspect-ratio(4 3);
 }
+
+// aspect ratios - custom per project
+
+.media--view-mode-banner {
+  @include fluid-aspect-ratio(120 43);
+}
+
+.media--view-mode-slide {
+  @include fluid-aspect-ratio(5 2);
+}
+
+.default-landscape-teaser,
+.media--view-mode-landscape-teaser {
+  @include fluid-aspect-ratio(4 3);
+}
+
+.media--view-mode-headshot {
+  @include fluid-aspect-ratio(5 6);
+}
+
+.media--view-mode-colorbox {
+  a.colorbox {
+    position: relative;
+    &:before {
+      position:absolute;
+      bottom: 0;
+      right: 0;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      font-family: $icomoon;
+      content: $icon-expand;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      color: $action-color;
+      background: $white;
+      z-index: 1;
+    }
+  }
+}
+
+// for video embeds via iframes added manually in the RTE
+
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+  /* Then style the iframe to fit in the container div with full height and width */
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+

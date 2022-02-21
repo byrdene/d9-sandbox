@@ -107,9 +107,10 @@ class CheckCommand extends Command
             }
         }
 
-        $drupalFinder->locateRoot($drupalRootCandidate);
-        $this->drupalRoot = realpath($drupalFinder->getDrupalRoot());
-        $this->vendorRoot = realpath($drupalFinder->getVendorDir());
+        if ($drupalFinder->locateRoot($drupalRootCandidate)) {
+            $this->drupalRoot = realpath($drupalFinder->getDrupalRoot());
+            $this->vendorRoot = realpath($drupalFinder->getVendorDir());
+        }
 
         if (!$this->drupalRoot) {
             $output->writeln(sprintf('<error>Unable to locate the Drupal root in %s</error>', $drupalRootCandidate));
@@ -190,20 +191,23 @@ class CheckCommand extends Command
             $output->writeln('<comment>Assumed running as local dependency</comment>', OutputInterface::VERBOSITY_DEBUG);
             $phpstanBin = \realpath(__DIR__ . '/../../vendor/phpstan/phpstan/phpstan.phar');
             $configuration_data['parameters']['bootstrapFiles'] = [\realpath(__DIR__ . '/../../error-bootstrap.php')];
-            $configuration_data['includes'] = [
-                \realpath(__DIR__ . '/../../vendor/phpstan/phpstan-deprecation-rules/rules.neon'),
-                \realpath(__DIR__ . '/../../vendor/mglaman/phpstan-drupal/extension.neon'),
-            ];
+            if (!class_exists('PHPStan\ExtensionInstaller\GeneratedConfig')) {
+                $configuration_data['includes'] = [
+                    \realpath(__DIR__ . '/../../vendor/phpstan/phpstan-deprecation-rules/rules.neon'),
+                    \realpath(__DIR__ . '/../../vendor/mglaman/phpstan-drupal/extension.neon'),
+                ];
+            }
         } elseif (file_exists(__DIR__ . '/../../../../autoload.php')) {
             // Running as a global dependency.
             $output->writeln('<comment>Assumed running as global dependency</comment>', OutputInterface::VERBOSITY_DEBUG);
             $phpstanBin = \realpath(__DIR__ . '/../../../../phpstan/phpstan/phpstan.phar');
             $configuration_data['parameters']['bootstrapFiles'] = [\realpath(__DIR__ . '/../../error-bootstrap.php')];
-            // The phpstan/extension-installer doesn't seem to register.
-            $configuration_data['includes'] = [
-                \realpath(__DIR__ . '/../../../../phpstan/phpstan-deprecation-rules/rules.neon'),
-                \realpath(__DIR__ . '/../../../../mglaman/phpstan-drupal/extension.neon'),
-            ];
+            if (!class_exists('PHPStan\ExtensionInstaller\GeneratedConfig')) {
+                $configuration_data['includes'] = [
+                    \realpath(__DIR__ . '/../../../../phpstan/phpstan-deprecation-rules/rules.neon'),
+                    \realpath(__DIR__ . '/../../../../mglaman/phpstan-drupal/extension.neon'),
+                ];
+            }
         } else {
             throw new ShouldNotHappenException('Could not determine if local or global installation');
         }
@@ -267,6 +271,16 @@ class CheckCommand extends Command
         unlink($configuration);
 
         $output->writeln('<comment>Return PHPStan exit code</comment>', OutputInterface::VERBOSITY_DEBUG);
+
+        $output->writeln('Thanks for using <info>drupal-check</info>!');
+        $output->writeln('');
+        $output->writeln('Consider sponsoring the development of the maintainers which make <options=bold>drupal-check</> possible:');
+        $output->writeln('');
+        $output->writeln('- <options=bold>phpstan (ondrejmirtes)</>: https://github.com/sponsors/ondrejmirtes');
+        $output->writeln('- <options=bold>phpstan-deprecation-rules (ondrejmirtes))</>: https://github.com/sponsors/ondrejmirtes');
+        $output->writeln('- <options=bold>phpstan-drupal (mglaman))</>: https://github.com/sponsors/mglaman');
+        $output->writeln('- <options=bold>drupal-check (mglaman))</>: https://github.com/sponsors/mglaman');
+
         return $process->getExitCode();
     }
 }

@@ -2,6 +2,8 @@ uuid: cd12c702-b28a-4406-8d5f-775ba123f1a4
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - tofu
 _core:
@@ -9,12 +11,16 @@ _core:
 id: tofu_page_title
 theme: tofu
 region: content
-weight: -30
+weight: -2
 provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
   label: 'Page title'
-  provider: core
   label_display: '0'
-visibility: {  }
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/node/*'

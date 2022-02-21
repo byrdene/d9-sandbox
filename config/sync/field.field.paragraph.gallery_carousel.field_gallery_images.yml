@@ -1,4 +1,4 @@
-uuid: f3ee1012-802a-47a4-a3d6-be961973af58
+uuid: 7868516e-b3cc-42bc-be3f-b55af3d36545
 langcode: en
 status: true
 dependencies:
@@ -6,6 +6,8 @@ dependencies:
     - field.storage.paragraph.field_gallery_images
     - media.type.image
     - paragraphs.paragraphs_type.gallery_carousel
+_core:
+  default_config_hash: GyZN607XYceUbu9tlSql2ICxSRj_5lSB5dsR8CWt2oE
 id: paragraph.gallery_carousel.field_gallery_images
 field_name: field_gallery_images
 entity_type: paragraph

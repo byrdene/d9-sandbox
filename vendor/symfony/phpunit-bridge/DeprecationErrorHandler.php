@@ -142,7 +142,7 @@ class DeprecationErrorHandler
 
         $msg = $deprecation->getMessage();
 
-        if (error_reporting() & $type) {
+        if (\E_DEPRECATED !== $type && (error_reporting() & $type)) {
             $group = 'unsilenced';
         } elseif ($deprecation->isLegacy()) {
             $group = 'legacy';
@@ -408,11 +408,11 @@ class DeprecationErrorHandler
         }
 
         if (\function_exists('stream_isatty')) {
-            return stream_isatty(\STDOUT);
+            return @stream_isatty(\STDOUT);
         }
 
         if (\function_exists('posix_isatty')) {
-            return posix_isatty(\STDOUT);
+            return @posix_isatty(\STDOUT);
         }
 
         $stat = fstat(\STDOUT);

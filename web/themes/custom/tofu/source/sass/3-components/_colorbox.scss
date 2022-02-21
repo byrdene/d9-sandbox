@@ -2,11 +2,106 @@
 //   COLORBOX
 // ==========================================================================
 
-#cboxWrapper {
-  font-family: $base-font-family;
-  color: $base-font-color;
-  #cboxCurrent {
-    color: $base-font-color;
-    bottom: -2px;
+#colorbox {
+  overflow: visible; // allow UI element to extend outside of image
+
+  #cboxWrapper {
+    font-family: $base-font-family;
+    background: $white;
+    overflow: visible; // allow UI element to extend outside of image
+
+    #cboxContent {
+      overflow: visible; // allow UI element to extend outside of image
+
+      .cboxPhoto {
+        border-radius: 0;
+      }
+
+      #cboxCurrent {
+        display: none !important;
+        //color: $base-font-color;
+        //bottom: -2px;
+      }
+
+      #cboxTitle {
+        position: relative !important;
+        display: block !important;
+        overflow: visible !important;
+        height: auto !important;
+        padding: $gutter/2 0 0 0 !important;
+        background: none;
+        color: $white;
+        font-style: italic;
+        font-family: $opensans;
+        @include font-weight(light);
+        @include font-size(14px);
+        line-height: 1.35;
+        p {
+          line-height: 1.35;
+        }
+      }
+
+      #cboxPrevious {
+        position: absolute;
+        top: calc(50% - 35px);
+        left: -40px;
+        width: 25px;
+        height: 32px;
+        background: url("../../static/images/previous-arrow.svg") no-repeat;
+        background-size: contain;
+        opacity: .7 !important;
+        overflow: hidden;
+        &:hover {
+          opacity: 1 !important;
+        }
+        &:focus {
+          opacity: 1 !important;
+          //outline: 1px solid $white;
+          //outline-offset: 4px;
+        }
+      }
+
+      #cboxNext {
+        position: absolute;
+        top: calc(50% - 35px);
+        right: -40px;
+        width: 25px;
+        height: 32px;
+        background: url("../../static/images/next-arrow.svg") no-repeat;
+        background-size: contain;
+        opacity: .7 !important;
+        overflow: hidden;
+        &:hover {
+          opacity: 1 !important;
+        }
+        &:focus {
+          opacity: 1 !important;
+          //outline: 1px solid $white;
+          //outline-offset: 4px;
+        }
+      }
+
+      #cboxClose {
+        border-radius: 0;
+        top: -30px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background: url("../../static/images/close.svg") no-repeat;
+        background-size: contain;
+        opacity: .7 !important;
+        overflow: hidden;
+        &:hover {
+          opacity: 1 !important;
+        }
+        &:focus {
+          opacity: 1 !important;
+          //outline: 1px solid $white;
+          //outline-offset: 4px;
+        }
+      }
+    }
   }
 }
+
+

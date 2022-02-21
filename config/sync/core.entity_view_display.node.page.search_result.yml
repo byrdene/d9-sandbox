@@ -5,7 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.page.body
-    - field.field.node.page.field_main_image
+    - field.field.node.page.field_components
     - field.field.node.page.field_metatags
     - field.field.node.page.field_related_view
     - node.type.page
@@ -17,13 +17,13 @@ bundle: page
 mode: search_result
 content:
   search_api_excerpt:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   body: true
-  field_main_image: true
+  field_components: true
   field_metatags: true
   field_related_view: true
   links: true

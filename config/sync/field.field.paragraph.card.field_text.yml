@@ -10,9 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
-    full_html: '0'
-    plain_text: '0'
+    allowed_formats:
+      - basic_html
 _core:
   default_config_hash: Ji5izaFAe3ZoUvbJP-kZBphN3yVSJszR85ZOZKDNU1Q
 id: paragraph.card.field_text

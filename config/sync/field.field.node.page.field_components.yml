@@ -1,0 +1,53 @@
+uuid: b2cd58aa-b42f-4da1-bc84-a1fc998ec78c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.page
+  module:
+    - entity_reference_revisions
+id: node.page.field_components
+field_name: field_components
+entity_type: node
+bundle: page
+label: 'Content Components'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 10
+        enabled: false
+      card_deck:
+        weight: 11
+        enabled: false
+      gallery_carousel:
+        weight: 12
+        enabled: false
+      gallery_slider:
+        weight: 13
+        enabled: false
+      image:
+        weight: 14
+        enabled: false
+      quote:
+        weight: 15
+        enabled: false
+      rich_text:
+        weight: 16
+        enabled: false
+      tiles:
+        weight: 17
+        enabled: false
+      tiles_item:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

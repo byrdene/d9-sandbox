@@ -17,17 +17,17 @@
   };
 }
 
-// ICO Moon Ultimate Font
+// Custom ICO Moon Font
 @include add-font(
         $fontName: 'ICO Moon',
-        $fontPath: '../../static/fonts/icomoon/icomoon',
+        $fontPath: '../../static/fonts/icomoon/fonts/icomoon',
         $fontTag: '#icomoon',
         $fontWeight: normal,
         $fontStyle: normal );
 
 // Typekit & Google fonts are loaded as libraries. Icon fonts are embedded above.
-$open-sans:   "Open Sans", sans-serif;
-$icomoon:   "ICO Moon", sans-serif;
+$opensans: "Open Sans", sans-serif;
+$icomoon: "ICO Moon", sans-serif;
 
 // Font weight
 $font-weights: (

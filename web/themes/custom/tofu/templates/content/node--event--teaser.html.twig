@@ -1,0 +1,25 @@
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isSticky() ? 'node--sticky',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+] %}
+
+<section {{ attributes.addClass(classes)}}>
+
+  {% if node.field_no_staff_led_programs.value %}
+    <div class="event-no-programs">
+      <p>No Staff-led Programs</p>
+    </div>
+  {% else %}
+    <div class="event-content-wrapper">
+      <div class="event-title-wrapper">
+        <h3 class="event-title"><a href="{{ url }}">{{ node.label }}</a></h3>
+      </div>
+      <div class="event-hours">
+        {{ content.field_event_hours }}
+      </div>
+    </div>
+  {% endif %}
+
+</section>

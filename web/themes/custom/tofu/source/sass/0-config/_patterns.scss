@@ -13,25 +13,182 @@
 }
 
 %label-small {
+  display: inline-block;
   @include font-size(12px);
-  @include font-weight(bold);
-  color: $base-font-color;
+  @include font-weight(semibold);
+  color: $primary-color;
   letter-spacing: 1px;
   text-transform: uppercase;
+  line-height: 14px;
 }
 
 %caption {
   color: $base-font-color;
-  @include font-size(12px);
+  @include font-size(14px);
   @include font-weight(normal);
+  //text-transform: uppercase;
+  font-style: italic;
   line-height: 18px;
+  text-align: left;
   margin: rem($vertical-spacing / 2) 0 ;
 }
 
 %citation {
-  @include font-size(18px);
-  @include font-weight(bold);
-  letter-spacing: 1px;
-  color: $primary-color;
+  @include font-size(14px);
+  @include font-weight(semibold);
+  color: inherit;
   text-transform: uppercase;
+  &:before {
+    display: inline-block;
+    content: "\2014";
+  }
+}
+
+%quote {
+  margin-top: $gutter*2;
+  padding-top: 3.5em;
+  position: relative;
+  p {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: $icomoon;
+    content: $icon-quotes-left;
+    color: $logo-green;
+    font-size: 3.5em;
+    line-height: 1;
+  }
+}
+
+%arrow-link-tail {
+  display: inline-block;
+  color: $black;
+  position: relative;
+  font-weight: inherit;
+  text-transform: none;
+  text-decoration: none;
+  margin-right: .5em;
+  border-bottom: 1px solid transparent;
+  &:after {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: $icomoon;
+    content: $icon-arrow-tail;
+    color: inherit;
+    font-size: 1em;
+    text-align: center;
+    @include font-weight(normal);
+    text-decoration: none;
+    padding: 0 0 0 .25em;
+    transition: all .2s ease-in;
+  }
+  &:hover,
+  &:active {
+    color: $black;
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    &:after {
+      padding-left: .5em;
+    }
+  }
+}
+
+%admin-buttons {
+  color: $white;
+  text-decoration: none;
+  background-color: $action-admin-color;
+  @include border-radius(8px);
+  padding: .75em 1.25em;
+  border: 1px solid $action-admin-color;
+  background-clip: border-box;
+  &.is-active {
+    background-color: $action-admin-color;
+  }
+  &:hover,
+  &:focus {
+    background-color: $white;
+    color: $action-admin-color;
+  }
+}
+
+// Focus outlines
+@mixin focus-outline($offset: 3px, $color: $base-focus-outline-color) {
+  outline: 1px dotted $color;
+  outline-offset: $offset !important;
+}
+
+// Placeholder text
+@mixin placeholder($size: 16px, $color: $default-gray, $weight: medium) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    @include font-weight($weight);
+    @include font-size($size);
+    opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+    @include font-weight($weight);
+    @include font-size($size);
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+    @include font-weight($weight);
+    @include font-size($size);
+  }
+}
+
+// Tiles
+@mixin two-tiles($left: 50%, $right: 50%) {
+  .tiles-item {
+    float: none;
+    width: 100%;
+    @include bp(small, up) {
+      float: left;
+      &:nth-of-type(2n+1) { // First item
+        width: $left;
+      }
+      &:nth-of-type(2n+2) { // Last item
+        width: $right;
+      }
+    }
+  }
+}
+
+@mixin three-tiles($left: 33%, $middle: 33, $right: 34%) {
+  .tiles-item {
+    width: 100%;
+    @include bp(small, up) {
+      float: left;
+      &:nth-of-type(3n+1) { // First item
+        width: 100%;
+      }
+      &:nth-of-type(3n+2) { // Middle item
+        width: calc(100% - #{$right});
+      }
+      &:nth-of-type(3n+3) { // Middle item
+        width: $right;
+        float: right;
+      }
+    }
+    @include bp(large, up) {
+      float: left;
+      &:nth-of-type(3n+1) { // First item
+        width: $left;
+      }
+      &:nth-of-type(3n+2) { // Middle item
+        width: $middle;
+      }
+      &:nth-of-type(3n+3) { // Middle item
+        width: $right;
+        float: left;
+      }
+    }
+  }
 }

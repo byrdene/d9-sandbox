@@ -1,0 +1,20 @@
+uuid: 2d199ce9-6ee3-44d4-807f-550dc79cd0f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tofu
+id: mainpagecontent
+theme: tofu
+region: content
+weight: 2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

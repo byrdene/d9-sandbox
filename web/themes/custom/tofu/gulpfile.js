@@ -14,8 +14,8 @@ const cssnano = require('cssnano');
 // File paths
 const files = {
   scssPath: './source/sass/*.scss',
-  jsContribPath: './source/js/contrib/*.js',
-  jsCustomPath: './source/js/custom/*.js'
+  // jsContribPath: './source/js/contrib/*.js',
+  jsCustomPath: './source/js/*.js'
 }
 
 // Sass task: compiles the scss files into css files
@@ -29,15 +29,16 @@ function scssTask(){
     ); // put final CSS in dist folder
 }
 
+// Not currently using this
 // JS task: uglifies contrib JS files
-function jsContribTask(){
-  return src(files.jsContribPath)
-    .pipe(sourcemaps.init()) // initialize sourcemaps first
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-    .pipe(dest('./dist/js/contrib')
-    ); // put final JS in dist folder
-}
+// function jsContribTask(){
+//   return src(files.jsContribPath)
+//     .pipe(sourcemaps.init()) // initialize sourcemaps first
+//     .pipe(uglify())
+//     .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
+//     .pipe(dest('./dist/js/contrib')
+//     ); // put final JS in dist folder
+// }
 
 // JS task: uglifies custom JS files
 function jsCustomTask(){
@@ -46,21 +47,29 @@ function jsCustomTask(){
     .pipe(jsValidate())
     .pipe(uglify())
     .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-    .pipe(dest('./dist/js/custom')
+    .pipe(dest('./dist/js')
     );  // put final JS in dist folder
 }
 
 // Watch task: watch SCSS and JS files for changes in all levels of folders
 // If any change, run scss and js tasks simultaneously
+// function watchTask(){
+//   watch(['./source/sass/*', './source/sass/*/*', './source/sass/*/*/*', './source/js/contrib/*.js', './source/js/custom/*.js'],
+//     parallel(scssTask, jsContribTask, jsCustomTask));
+// }
 function watchTask(){
-  watch(['./source/sass/*', './source/sass/*/*', './source/sass/*/*/*', './source/js/contrib/*.js', './source/js/custom/*.js'],
-    parallel(scssTask, jsContribTask, jsCustomTask));
+  watch(['./source/sass/*', './source/sass/*/*', './source/sass/*/*/*', './source/js/*.js'],
+    parallel(scssTask, jsCustomTask));
 }
 
 // Export the default Gulp task so it can be run (type "gulp" within the theme folder on the command line)
 // Runs the scss and js tasks simultaneously
 // then watch task
+// exports.default = series(
+//   parallel(scssTask, jsContribTask, jsCustomTask),
+//   watchTask
+// );
 exports.default = series(
-  parallel(scssTask, jsContribTask, jsCustomTask),
+  parallel(scssTask, jsCustomTask),
   watchTask
 );

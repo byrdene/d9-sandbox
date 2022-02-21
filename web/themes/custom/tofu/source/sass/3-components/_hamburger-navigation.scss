@@ -1,0 +1,89 @@
+// ==========================================================================
+//   PRIMARY NAVIGATION
+//   The styles for the animating hamburger button are in their own partial (hamburgers/hamburgers.scss
+//   These styles are for theming the button (colors,fonts, etc) and for the menu div that the button toggles open
+// ==========================================================================
+
+//html.js {
+//  #navigation-panel {
+//    display: none; // hide to start but only when js is enabled
+//  }
+//}
+
+// override hamburger icons styles from hamburgers/base.scss (we want two lines instead of three)
+//.hamburger--squeeze {
+//  .hamburger-inner {
+//    background-color: transparent !important; //effectively eliminates the middle line
+//    &:before {
+//      top: -4px;
+//    }
+//    &:after {
+//      bottom: -4px;
+//    }
+//  }
+//  &.is-active {
+//    .hamburger-inner {
+//      &:before {
+//        opacity: 1;
+//      }
+//    }
+//  }
+//}
+
+#hamburger-navigation {
+  button.hamburger {
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 30px; // match height of something
+    line-height: 30px; // match height of something
+    width: 32px; // needs to allow for label (if using), potential padding, etc
+    padding: 0;
+    background-color: transparent;
+    transition: all .3s ease-in;
+    .hamburger-label {
+      display: none;
+      //display: inline-block;
+      width: 60px;
+      color: $black;
+      text-decoration: none;
+      font-family: $base-font-family;
+      @include font-weight(normal);
+      @include font-size(14px);
+      @include tracking(80);
+      text-transform: uppercase;
+    }
+    .hamburger-box {
+      top: 4px; // to visually center it
+      .hamburger-inner, // comment out if not showing the middle line
+      .hamburger-inner:after,
+      .hamburger-inner:before  {
+        background-color: $action-color;
+        width: 32px;  // this how to make it thinner/wider
+        height: 3px; // this will make the lines thicker
+      }
+    }
+    &.is-active,
+    &:active,
+    &:focus,
+    &:hover {
+      //background-color: $primary-color;
+      background-color: transparent;
+      opacity: 1;
+      outline: none;
+      .hamburger-label {
+        display: none;
+        //color: $white;
+      }
+      .hamburger-inner,
+      .hamburger-inner:after,
+      .hamburger-inner:before  {
+        background-color: $primary-color;
+      }
+    }
+    &:active,
+    &:focus {
+      outline: $base-focus-outline-color 1px dotted;
+    }
+  }
+}

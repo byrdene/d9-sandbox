@@ -1,10 +1,12 @@
-uuid: 13b52a1e-50b7-4cb5-a8ae-e9283a5758c0
+uuid: 0321adbf-ca4a-4e8b-bada-d87404324f84
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_custom_class
     - paragraphs.paragraphs_type.gallery_carousel
+_core:
+  default_config_hash: SXfQ7I62qLco3ltrf2JSyS-VgaSjZzzL2V9AwdESnj8
 id: paragraph.gallery_carousel.field_custom_class
 field_name: field_custom_class
 entity_type: paragraph

@@ -43,42 +43,19 @@ input[type="search"] {
   height: $form-item-height;
   line-height: $form-item-height;
   padding: $gutter/4 $gutter/2;
-  border: 1px solid $base-border-color;
+  border: 1px solid $primary-color;
   font-family: $base-font-family;
-  @include font-size(18px);
+  @include font-size(14px);
   @include font-weight(normal);
   color: $primary-color;
-  /* Webkit */
-  &::-webkit-input-placeholder {
-    font-family: $base-font-family;
-    @include font-size(18px);
-    @include font-weight(normal);
-    color: $primary-color;
-  }
-  /* Firefox 4-18 */
-  &:-moz-placeholder {
-    font-family: $base-font-family;
-    @include font-size(18px);
-    @include font-weight(normal);
-    color: $primary-color;
-  }
-  /* Firefox 19+ */
-  &::-moz-placeholder {
-    font-family: $base-font-family;
-    @include font-size(18px);
-    @include font-weight(normal);
-    color: $primary-color;
-  }
-  /* IE10+ */
-  &:-ms-input-placeholder {
-    font-family: $base-font-family;
-    @include font-size(18px);
-    @include font-weight(normal);
-    color: $primary-color;
-  }
+
+  @include placeholder($size: 14px, $weight: normal);
+
   &:focus {
-    outline: none;
-    border: 2px solid $action-color;
+    //outline: none;
+    //border: 2px solid $action-color;
+    outline: 2px solid $action-color;
+    outline-offset: -1px;
   }
 }
 
@@ -100,8 +77,8 @@ textarea {
 select {
   &:focus {
     //outline: rgb(59, 153, 252) auto 5px !important;
-    outline: $action-color 2px solid !important;
-    outline-offset: 3px !important; // hard to see without an offset
+    outline: 2px solid $action-color;
+    outline-offset: -1px;
   }
 }
 
@@ -176,8 +153,9 @@ input[type="submit"] {
   &:focus {
     //outline: rgb(59, 153, 252) auto 5px !important;
     //outline: $action-color 1px dotted;
-    outline: $action-color 2px solid !important;
-    outline-offset: 3px !important; // hard to see without an offset
+    //outline: $action-color 2px solid !important;
+    //outline-offset: 3px !important; // hard to see without an offset
+    @include focus-outline(); // hard to see without an offset
   }
 }
 
@@ -204,8 +182,7 @@ details {
     padding: 0.2em 0.5em;
     @include font-weight(bold);
     &:focus {
-      outline: 1px dotted $base-font-color;
-      outline-offset: 3px;
+      @include focus-outline();
     }
   }
   summary[aria-pressed="true"] { // border applied on details
@@ -237,4 +214,9 @@ details > .details__content {
       border: 2px solid $action-color;
     }
   }
+}
+
+// user login form
+.user-login-form {
+  margin-top: $gutter*2;
 }

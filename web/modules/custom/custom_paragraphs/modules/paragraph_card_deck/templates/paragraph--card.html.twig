@@ -2,6 +2,7 @@
 {%
   set classes = [
   'card',
+  'card-item',
   'container',
   custom_class,
 ]
@@ -31,3 +32,9 @@
     </div>
   </div>
 </article>
+
+{% set ical_link = 'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:' ~ atc_start_date|date("Ymd\\THi00\\Z") ~ '%0ADTEND:' ~ atc_end_date|date("Ymd\\THi00\\Z") ~ '%0ASUMMARY:' ~ atc_title ~ '%0ADESCRIPTION:' ~ atc_details|striptags ~ '%0ALOCATION:' ~ atc_location|replace({'<br />
+': ' ', '<br />
+': ' ', '
+<p>': ' ', '</p>
+': ''}) ~ '%0AEND:VEVENT%0AEND:VCALENDAR' %}

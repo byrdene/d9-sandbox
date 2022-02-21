@@ -1,10 +1,12 @@
-uuid: 79171026-35fb-4448-b9ac-431098128cd2
+uuid: 25f84f6c-9ad9-48ff-aa28-649d8763c88a
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_heading
     - paragraphs.paragraphs_type.gallery_carousel
+_core:
+  default_config_hash: amKrCaqnqoeZCdfxB1jgkPUEvJJSo2IyVVNB0WJcT_A
 id: paragraph.gallery_carousel.field_heading
 field_name: field_heading
 entity_type: paragraph

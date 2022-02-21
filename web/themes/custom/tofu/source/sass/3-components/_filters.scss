@@ -1,0 +1,117 @@
+// ==========================================================================
+//   FILTERS
+// ==========================================================================
+
+// Better Exposed Filters
+.bef-exposed-form {
+  width: 100%;
+
+  .form-item,
+  .form-actions {
+    clear: both;
+    float: left;
+  }
+}
+
+.view-filters {
+  //unique to project
+
+  .form-item,
+  .form-actions {
+    margin: 0 0 $gutter 0;
+  }
+
+  // be more specific in excluding if some labels should appear
+  .form-item {
+    label {
+      @include invisible;
+    }
+    input {
+      @include font-size(14px);
+    }
+
+  }
+
+  @include bp(medium, up) {
+    //display: flex;
+    //justify-content: center;
+
+    .form--inline {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+
+      .form-item {
+        margin-right: 0;
+        & + .form-item,
+        & + .form-actions {
+          margin-left: $gutter;
+        }
+      }
+
+    }
+  }
+
+  #edit-reset-calendar {
+    background: none;
+    border: none;
+    color: $action-color;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: none;
+    @include font-size(14px);
+    padding: 0;
+    &:hover {
+      background: none;
+      border: none;
+      color: $primary-color !important;
+      text-align: center;
+      text-decoration: underline;
+      text-transform: none;
+    }
+    &:focus {
+      background: none;
+      border: none;
+      color: $primary-color !important;
+      text-align: center;
+      text-decoration: underline;
+      text-transform: none;
+      @include focus-outline();
+    }
+  }
+
+  .reset-button {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    input[type="submit"] { //override button styles
+      background: none;
+      border: none;
+      color: $action-color;
+      text-align: center;
+      text-decoration: underline;
+      text-transform: none;
+      @include font-size(14px);
+      padding: 0;
+      &:hover {
+        background: none;
+        border: none;
+        color: $primary-color !important;
+        text-align: center;
+        text-decoration: underline;
+        text-transform: none;
+      }
+      &:focus {
+        background: none;
+        border: none;
+        color: $primary-color !important;
+        text-align: center;
+        text-decoration: underline;
+        text-transform: none;
+        @include focus-outline();
+      }
+    }
+  }
+}

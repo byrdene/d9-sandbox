@@ -6,8 +6,12 @@ overrides:
 
 slick:
   version: VERSION
+  css:
+    theme:
+      vendor/slick/slick.css: {}
+
   js:
-    js/plugins/slick/slick.js: {}
+    vendor/slick/slick.min.js: {}
     js/slick-init.js: {}
   dependencies:
     - core/jquery

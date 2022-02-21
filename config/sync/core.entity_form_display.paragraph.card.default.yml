@@ -19,18 +19,18 @@ third_party_settings:
         - field_item_heading
         - field_text
         - field_image
+      label: 'Card Content'
+      region: content
       parent_name: ''
       weight: 0
       format_type: details
-      region: content
       format_settings:
+        classes: ''
         show_empty_fields: false
         id: ''
-        classes: ''
-        description: ''
         open: false
+        description: ''
         required_fields: true
-      label: 'Card Content'
 _core:
   default_config_hash: PactdU30nI0So8dTZtTGMB5pFFDerRPbAdo0DbW_oL0
 id: paragraph.card.default
@@ -39,22 +39,24 @@ bundle: card
 mode: default
 content:
   field_image:
+    type: media_library_widget
     weight: 4
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    type: media_library_widget
-    region: content
   field_item_heading:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_text:
+    type: text_textarea
     weight: 3
+    region: content
     settings:
       rows: 3
       placeholder: ''
@@ -62,8 +64,6 @@ content:
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
-    type: text_textarea
-    region: content
 hidden:
   created: true
   status: true

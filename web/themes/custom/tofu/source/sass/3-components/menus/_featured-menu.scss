@@ -1,0 +1,52 @@
+.wrapper__menu--featured,
+.menu--featured {
+
+  // mobile menu only
+  @include bp($desktop-nav, down) {
+    ul.menu {
+      li {
+        display: block;
+        a {
+          color: $white;
+          @include font-size(14px);
+          padding: $gutter/4 $gutter;
+          text-decoration: none;
+          &:hover,
+          &:focus {
+            color: rgba(255,255,255,.8);
+          }
+        }
+      }
+    }
+  }
+
+  @include bp($desktop-nav, up) {
+    display: block;
+    float:right;
+    ul.menu {
+      li {
+        display: inline-block;
+        float:left;
+        a {
+          display: inline-block;
+          color: $white;
+          text-decoration: none;
+          padding: 0 .5em;
+          height: 30px;
+          line-height: 30px;
+          background-color: $action-color;
+          &:hover,
+          &:focus {
+            background-color: $primary-color;
+          }
+          &:focus {
+            @include focus-outline();
+          }
+        }
+        & + li {
+          margin-left: $gutter/4;
+        }
+      }
+    }
+  }
+}

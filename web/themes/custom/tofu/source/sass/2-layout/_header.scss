@@ -2,44 +2,144 @@
 //   SITE HEADER
 // ==========================================================================
 
-#site-header {
-  @include clearfix;
-  background: $header-background-color;
-  position: relative;
-  height: $mobile-header-height;
-  @include bp($main-nav, up) {
-    height: auto;
-  }
-  .container {
-    @include center-block;
-    max-width: $page-width;
+header {
+  //border-bottom: 2px solid $primary-color;
+  #site-header {
+    padding: $gutter;
+    .region-header {}
+    .navigation-wrapper{
+      #navigation-panel {}
+      .region-navigation-secondary {
+        width: 100%;
+        #search-trigger {
+          position: absolute;
+          right: 65px;
+          top: 30px;
+        }
+        .search-wrapper {
+          position: absolute;
+          top: 85px;
+          bottom: auto;
+          right: 0;
+          left: auto;
+          width: 100%;
+          max-width: 480px;
 
-    @include bp($main-nav, up) {
-      .region-header {
-        width: ($logo-mx-medium +  $gutter*2 + $gutter*2);
-        float: left;
-      }
-      .region-navigation-secondary {
-        position: relative;
-        float:right;
-        width: calc(100% - (#{$logo-mx-medium} + (#{$gutter}*4)));
+        }
       }
     }
-    @include bp(large, up) {
-      .region-header {
-        width: ($logo-mx-large +  $gutter*2 + $gutter*2);
-      }
-      .region-navigation-secondary {
-        width: calc(100% - (#{$logo-mx-large} + (#{$gutter}*4)));
+
+    // unique to hamburger-triggered mobile menu
+    @include bp($desktop-nav, down) {
+      .navigation-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        #navigation-panel {
+          display: none;
+          z-index: 500;
+          //padding: $gutter 0;
+          width: 100%;
+          max-width: 480px;
+          float: right;
+          top: $mobile-header-height;
+          background-color: $primary-color;
+          padding-bottom: $gutter;
+        }
       }
     }
-    @include bp(x-large, up) {
-      .region-header {
-        width: ($logo-mx-xlarge +  $gutter*2 + $gutter*2);
-      }
-      .region-navigation-secondary {
-        width: calc(100% - (#{$logo-mx-xlarge} + (#{$gutter}*4)));
+
+    @include bp($desktop-nav, up) {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .region-header {}
+      .navigation-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - #{$logo-mx-tablet});
+        #navigation-panel {
+          display: block !important; // show for horizontal display
+          .wrapper__menu--main {
+            float: right;
+            margin-bottom: $gutter/2;
+          }
+          .grouped-menus {
+            float: right;
+            > div {
+              float: right;
+              clear: both;
+              & + div {
+                margin-top: $gutter/2;
+                margin-left: $gutter/2;
+              }
+              &:last-of-type {
+                padding-right: 40px; // make room for search icon
+              }
+            }
+          }
+        }
+        .region-navigation-secondary {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          #search-trigger {
+            right: 0;
+            bottom: 0;
+            top: auto;
+          }
+          .search-wrapper {
+            position: absolute;
+            top: 20px; // distance from trigger
+            bottom: auto;
+            right: 0;
+            left: auto;
+            width: 100%;
+            max-width: 480px;
+          }
+        }
       }
     }
+
+    @include bp(wide-menu, up) {
+      .region-header {}
+      .navigation-wrapper {
+        width: calc(100% - #{$logo-mx-desktop});
+        #navigation-panel {
+          .wrapper__menu--main {
+            margin-bottom: $gutter;
+          }
+          .grouped-menus {
+            float: right;
+            > div {
+              float: left;
+              clear: none;
+              & + div {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // positioning the hamburger trigger
+    #hamburger-navigation {
+      display: block;
+      position: absolute;
+      top: $gutter*1.5;
+      right: $gutter;
+      left: auto;
+      bottom: auto;
+      z-index: 999;
+
+      @include bp($desktop-nav, up) {
+        display: none;
+      }
+    }
+
   }
+
 }
+

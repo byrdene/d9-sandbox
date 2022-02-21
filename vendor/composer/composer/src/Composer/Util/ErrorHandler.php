@@ -13,6 +13,7 @@
 namespace Composer\Util;
 
 use Composer\IO\IOInterface;
+use Composer\Pcre\Preg;
 
 /**
  * Convert PHP errors into exceptions
@@ -21,6 +22,7 @@ use Composer\IO\IOInterface;
  */
 class ErrorHandler
 {
+    /** @var ?IOInterface */
     private static $io;
 
     /**
@@ -52,8 +54,12 @@ class ErrorHandler
         }
 
         if (self::$io) {
-            // ignore symfony/* deprecation warnings about return types
-            if (preg_match('{^Return type of Symfony\\\\.*ReturnTypeWillChange}is', $message)) {
+            // ignore symfony/* deprecation warnings
+            // TODO remove in 2.3
+            if (Preg::isMatch('{^Return type of Symfony\\\\.*ReturnTypeWillChange}is', $message)) {
+                return true;
+            }
+            if (strpos(strtr($file, '\\', '/'), 'vendor/symfony/') !== false) {
                 return true;
             }
 
@@ -77,6 +83,8 @@ class ErrorHandler
      * Register error handler.
      *
      * @param IOInterface|null $io
+     *
+     * @return void
      */
     public static function register(IOInterface $io = null)
     {

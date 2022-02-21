@@ -13,30 +13,6 @@
   pre {
     border: 0;
   }
-  div.bt-close-message { // Button add by jquery
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: .5em 0 0 0;
-    display: block;
-    width: 40px;
-    height: 40px;
-    float: right;
-    text-align: center;
-    cursor: pointer;
-    &:before {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
-      background-color: transparentize($white, .7);
-      content: "x";
-      text-align: center;
-    }
-    &:hover {
-      color: white;
-    }
-  }
 }
 .messages--warning {
   color: darken($error-color, 15%);
@@ -54,20 +30,6 @@
     background-color: darken($error-color, 10%);
   }
 }
-//.messages--status {
-//  color: darken($status-color, 35%);
-//  background-color: $status-color;
-//  border-color: darken($status-color, 10%);
-//  a {
-//    color: darken($status-color, 35%);
-//    &:hover {
-//      color: darken($status-color, 35%);
-//    }
-//  }
-//  pre {
-//    background-color: darken($status-color, 10%);
-//  }
-//}
 
 .messages--status {
   color: $base-font-color;

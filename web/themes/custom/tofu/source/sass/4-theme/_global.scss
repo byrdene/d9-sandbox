@@ -1,0 +1,715 @@
+
+// General class definitions for styles that can be applied globally
+
+
+// Background classes
+.bg {
+  &__primary-color {
+    background-color: $primary-color;
+    color: $white;
+    h2, .h2,
+    h3, .h3,
+    h4, .h4,
+    a[href] {
+      color: $white !important;
+    }
+  }
+  &__ice {
+    background-color: $ice;
+    color: $base-font-color;
+    h1, .h1,
+    h2, .h2,
+    h3, .h3,
+    h4, .h4,
+    a[href] {
+      color: $primary-color !important;
+    }
+  }
+}
+
+// Text classes
+.text {
+  &__centered {
+    text-align: center;
+  }
+  &__large {
+    font-size: 1.25em;
+  }
+  &__small {
+    font-size: 12px;
+  }
+  &__allcaps {
+    text-transform: uppercase;
+  }
+  &__label {
+    text-transform: uppercase;
+    color: $ultramarine;
+    @include font-size(16px);
+    @include font-weight(semibold);
+    @include tracking(40);
+    margin-bottom: 0;
+  }
+}
+
+// viewport visibility
+.desktop {
+  display: none;
+  @include bp(large, up) {
+    display: block;
+  }
+}
+
+.mobile {
+  display: block;
+  @include bp(large, up) {
+    display: none;
+  }
+}
+
+
+// the following should probably go into node partials or be flagged as project specific
+
+.page-title-wrapper {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.page-header-wrapper {
+  & + .page-title-wrapper {
+    margin-top: 5px;
+  }
+  @include bp(x-large, up) {
+    padding: 0 $gutter/4;
+  }
+}
+
+.banner {
+  &__faculty-grant {
+    padding: $gutter*2 0;
+    @include bp(medium, up) {
+      padding: $gutter*3 0;
+    }
+    .h1 {
+      margin-right: $gutter*2;
+      margin-bottom: $gutter/2;
+      border-bottom: 1px solid $action-color;
+    }
+    h1 {
+      @include font-size(20px);
+      @include font-weight(normal);
+      font-style: italic;
+      margin-top: 0;
+      max-width: 70%;
+    }
+    .quote-text-wrapper {
+      @extend %quote;
+      max-width: 75%;
+    }
+  }
+
+  &__scholar {
+    @include bp(large, up) {
+      display: flex;
+      justify-content: center;
+      margin-left: $gutter*2;
+    }
+    .banner-wrapper {
+      padding: $gutter 0 $gutter*2 0;
+      .banner-headshot-wrapper {
+        padding: 0 0 $gutter $gutter;
+        width: 224px;
+        max-width: 224px;
+      }
+      @include bp(small, up) {
+        padding: $gutter*2 0;
+        display: flex;
+        .banner-headshot-wrapper {
+          width: 30%;
+          max-width: 30%;
+        }
+        .banner-text-wrapper {
+          width: 70%;
+          max-width: 70%;
+        }
+      }
+      @include bp(medium, up) {
+        padding: $gutter*3 0;
+        .banner-headshot-wrapper {
+          width: 224px;
+          max-width: 224px;
+          padding-left: $gutter*2;
+        }
+        .banner-text-wrapper {
+          width: calc(100% - 224px);
+        }
+      }
+      @include bp(large, up) {
+        .banner-headshot-wrapper {
+          padding: 0;
+          position: absolute;
+          width: 224px;
+          max-width: 224px;
+          top: $gutter;
+          left: -112px;
+          z-index: 1;
+          & + .banner-text-wrapper {
+            .page-title-wrapper h1,
+            .undergrad-name-wrapper,
+            .undergrad-year-wrapper,
+            .quote-text-wrapper {
+              margin-left: 100px;
+            }
+          }
+        }
+        .banner-text-wrapper {
+          width: 100%;
+          max-width: none;
+        }
+      }
+    }
+    .page-title-wrapper {
+      padding: 0;
+      margin-right: $gutter*2;
+      margin-bottom: $gutter;
+      border-bottom: 1px solid $action-color;
+      h1 {}
+    }
+    .undergrad-name-wrapper,
+    .undergrad-year-wrapper {
+      @include font-weight(16px);
+      @include font-weight(semibold);
+      @include tracking(80);
+      line-height: 1.25;
+    }
+    .quote-text-wrapper {
+      @extend %quote;
+      //max-width: 75%;
+    }
+  }
+}
+
+.teaser-wrapper {
+  &.tiles {
+    @include two-tiles($left: 40%, $right: 60%);
+    .col-b {
+      padding-top: 0; // tighter for mobile and override global style
+      @include bp(small, up) {
+        padding-top: $gutter; // set back to global style
+      }
+      @include bp(medium, up) {
+        padding-top: $gutter*2; //set back to global style
+      }
+      &__grant-years {
+        margin-top: $gutter/2;
+        color: $black;
+        @include font-size(20px);
+        @include font-weight(semibold);
+        padding-bottom: $gutter/2;
+        border-bottom: 1px solid $white;
+      }
+      &__institution {
+        margin-top: $gutter;
+        color: $logo-blue;
+        @include font-size(34px);
+        @include font-weight(semibold);
+        line-height: 1.1;
+      }
+      &__page-title {
+        margin-top: $gutter;
+        h2.page-title {
+          color: $black;
+          @include font-size(20px);
+          @include font-weight(normal);
+          font-style: italic;
+          line-height: 1.3;
+        }
+      }
+      &__investigator {
+        margin-top: $gutter;
+        color: $black;
+        @include font-size(16px);
+        @include font-weight(normal);
+        line-height: 1.3;
+      }
+      &__learn-more {
+        margin-top: $gutter;
+      }
+
+      &__grant-years,
+      &__institution,
+      &__page-title,
+      &__investigator,
+      &__learn-more {
+        padding-left: 0;
+        @include bp(small, up) {
+          padding-left: $gutter;
+        }
+        @include bp(medium, up) {
+          padding-left: $gutter*2;
+        }
+        @include bp(large, up) {
+          padding-left: $gutter*4;
+        }
+        @include bp(x-large, up) {
+          padding-left: $gutter*5;
+        }
+      }
+    }
+  }
+}
+
+.featured-wrapper {
+  .col-a,
+  .col-b {
+    float: none;
+    width: 100%;
+  }
+  .col-a {
+    &__text__intro {
+      margin-top: $gutter/2;
+      h2 {
+        color: $black;
+        @include font-size(22px);
+        @include font-weight(light);
+        @include tracking(80);
+        line-height: 1.3;
+      }
+      padding-bottom: $gutter/2;
+      border-bottom: 1px solid $seafoam;
+    }
+    &__image {
+      margin-top: $gutter;
+    }
+
+    &__text__intro,
+    &__text__institution,
+    &__text__grant-years,
+    &__text__page-title,
+    &__text__undergrad_year,
+    &__image {
+      padding-left: 0;
+      @include bp(small, up) {
+        padding-right: $gutter;
+      }
+      @include bp(large, up) {
+        padding-left: $gutter*2;
+        padding-right: $gutter*2;
+      }
+    }
+  }
+  .col-b,
+  .desktop {
+    &__quote {
+      background-color: $seafoam;
+      padding: $gutter;
+      border-radius: 10px;
+      @include bp(medium, up) {
+        padding: $gutter $gutter*1.5;
+      }
+      .quote-text-wrapper {
+        @extend %quote;
+        margin-top: -$gutter*2;
+      }
+    }
+    &__learn-more,
+    &__see-all {
+      padding-left: $gutter;
+      @include bp(medium, up) {
+        padding-left: $gutter*1.5;
+      }
+    }
+    &__learn-more {
+      margin-top: $gutter*1.5;
+    }
+    &__see-all {
+      margin-top: $gutter;
+      @include font-size(14px);
+      @include font-weight(normal);
+      @include tracking(10);
+    }
+  }
+
+  @include bp(small, up) {
+    .col-a {
+      display: block;
+      width: 55%;
+      float: left;
+    }
+    .col-b {
+      display: block;
+      width: 45%;
+      float: left;
+    }
+  }
+
+  @include bp(large, up) {
+    .col-a {
+      display: flex;
+      flex-direction: row-reverse;
+      &__text {
+        width: 60%;
+      }
+      &__image {
+        width: 40%;
+        margin-top: 0;
+        padding: 0;
+      }
+    }
+  }
+  @include bp(x-large, up) {
+    padding: 0 $gutter/4;
+  }
+
+  // layout specs unique to homepage feature
+  &.homepage-feature {
+    .desktop_text {
+      display: none;
+    }
+    @include bp(medium,up) {
+      .desktop__quote {
+        margin-left: $gutter/2;
+      }
+    }
+    @include bp(large, up) {
+      .col-a {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        &__text {
+          width: 55%;
+        }
+        &__image {
+          width: 45%;
+          margin-top: 0;
+          padding: 0;
+        }
+        .desktop_text {
+          display: block;
+          margin-left: $gutter*2;
+          .desktop {
+            &__learn-more,
+            &__see-all {
+              padding-left: $gutter;
+              @include bp(medium, up) {
+                padding-left: $gutter*2;
+              }
+            }
+          }
+        }
+        &__text__intro,
+        &__text__institution,
+        &__text__grant-years,
+        &__text__page-title,
+        &__text__undergrad_year {
+          @include bp(large, up) {
+            padding-left: $gutter*4;
+          }
+        }
+      }
+      .col-b {
+        display: none;
+      }
+    }
+  }
+
+  // text specs specific to the node type
+  &.faculty-grant-profile {
+    .col-a {
+      &__text__institution {
+        margin-top: $gutter;
+        color: $logo-blue;
+        @include font-size(34px);
+        @include font-weight(semibold);
+        line-height: 1.1;
+      }
+      &__text__grant-years {
+        margin-top: $gutter;
+        color: $black;
+        @include font-size(16px);
+        @include font-weight(semibold);
+        line-height: 1.3;
+      }
+      &__text__page-title {
+        margin-top: $gutter;
+        color: $black;
+        @include font-size(20px);
+        @include font-weight(normal);
+        font-style: italic;
+        line-height: 1.3;
+      }
+    }
+  }
+  &.scholar-profile {
+    .col-a {
+      &__text__page-title {
+        margin-top: $gutter;
+        color: $logo-blue;
+        @include font-size(34px);
+        @include font-weight(semibold);
+        line-height: 1.1;
+      }
+      &__text__institution {
+        margin-top: $gutter/2;
+        color: $black;
+        @include font-size(16px);
+        @include font-weight(semibold);
+        @include tracking(80);
+        line-height: 1.3;
+      }
+      &__text__undergrad_year {
+        margin-top: $gutter/4;
+        color: $black;
+        @include font-size(16px);
+        @include font-weight(semibold);
+        @include tracking(80);
+        line-height: 1.3;
+      }
+    }
+  }
+
+}
+
+.node--type-homepage {
+  .hero-wrapper {
+    position: relative;
+    .hero-image-wrapper {
+      .hero-image {
+        img {
+          max-width: none;
+          width: 100%;
+        }
+      }
+    }
+    .hero-text-wrapper {
+      .hero-text-box {
+        background-color: $dark-teal;
+        color: $white;
+        .hero-statement {
+          @include font-size(19px);
+          @include font-weight(semibold);
+          line-height: 1.5;
+        }
+        .hero-summary {
+          @include font-size(14px);
+          @include font-weight(normal);
+        }
+        .hero-buttons {
+          padding: $gutter/2 0; // needs extra gutters at small breakpoints
+          a {
+            margin-right: .25em;
+          }
+        }
+      }
+      @include bp(body-width, up) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        .inner-wrapper {
+          height: 100%;
+          .hero-text-box {
+            position: relative;
+            background-color: transparent;
+            //background-color: rgba(18, 84, 115, .88);
+            height: 100%;
+            width: 50%;
+            .hero-statement {
+              @include font-size(18px);
+            }
+            .hero-summary {
+              @include font-size(14px);
+            }
+            .hero-buttons {
+              padding: 0;
+            }
+            &:before {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              content: "";
+              background-color: rgba(18, 84, 115, 1);
+              mix-blend-mode: multiply;
+            }
+          }
+        }
+      }
+      @include bp(large, up) {
+        .inner-wrapper {
+          .hero-text-box {
+            max-width: 450px;
+            .hero-statement {
+              @include font-size(20px);
+            }
+            .hero-summary {
+              @include font-size(16px);
+            }
+          }
+        }
+      }
+      @include bp(x-large, up) {
+        .inner-wrapper {
+          padding: 0 $gutter*2;
+          .hero-text-box {
+            .hero-statement {
+              @include font-size(24px);
+            }
+            .hero-summary {
+              @include font-size(18px);
+            }
+          }
+        }
+      }
+    }
+    @include bp(body-width, up) {
+      @include fluid-aspect-ratio(5 2); // for CLS while slideshow loads
+      &:after {
+        background-color: $cool-gray;
+      }
+    }
+  }
+}
+
+.node--type-scholar-profile {
+  &.node--view-mode-card {
+    position: relative;
+    a {
+      .card-wrapper_headshot__page-title {
+        text-decoration: none;
+        background-color: rgba(10, 40, 84, .75);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .page-title {
+          color: $white;
+          padding: $gutter/4 $gutter/2;
+        }
+      }
+      &:hover,
+      &:focus {
+        .card-wrapper_headshot__page-title {
+          background-color: rgba(10, 40, 84, 1);
+        }
+      }
+    }
+  }
+}
+
+.node--type-page {
+  .content-wrapper {
+    & + .views-element-container {
+      margin-top: $gutter*2;
+    }
+  }
+}
+
+.node--type-leadership {
+  .leadership-headshot-wrapper {
+    margin-bottom: $gutter;
+  }
+  @include bp(small, up) {
+    .leadership-headshot-wrapper {
+      float: left;
+      width: 40%;
+      padding-right: $gutter*2;
+      & + .leadership-text-wrapper {
+        float: right;
+        width: 60%;
+      }
+    }
+  }
+}
+
+.node--type-scholar-profile,
+.node--type-faculty-grant-profile {
+  .text__label {
+    & + .field--name-field-more-information {
+      margin-top: $gutter;
+    }
+  }
+}
+
+//currently the only instance of this is on the
+//the leadership page but if we use this field
+//on other pages, we may need to restrict this style
+.field--name-field-related-view-blocks {
+  .field__item__label {
+    h2 {
+      border-bottom: 2px solid $seafoam;
+      padding-bottom: $gutter/4;
+      margin-bottom: $gutter;
+    }
+  }
+}
+
+.view-leadership {
+  &.view-display-id-block_1 {
+    .vertical-flow {
+      & + .vertical-flow {
+        @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*2);
+      }
+    }
+  }
+  &.view-display-id-block_2,
+  &.view-display-id-block_3 {
+    //smaller vertical flow in these instances
+    .vertical-flow {
+      & + .vertical-flow {
+        @include vertical-flow($mobile: $gutter/2, $desktop: $gutter/2);
+      }
+    }
+  }
+}
+
+.view-scholar-profiles {
+  padding: 0 $gutter;
+  @include bp(medium, up) {
+    padding: 0 $gutter*2;
+  }
+  @include bp(content-width, up) {
+    padding: 0;
+  }
+}
+
+.view-alumni-scholars {
+  a {
+    display: inline-block;
+    -webkit-transition: color 250ms cubic-bezier(0.82, 0.06, 0.14, 0.97);
+    transition: color 250ms cubic-bezier(0.82, 0.06, 0.14, 0.97);
+
+    &.facebook .icon {
+      @include icon($icon-facebook, $iconBgSize: 20px, $iconBg: transparent, $iconColor: $black, $iconHoverBg: transparent, $iconHoverColor: $action-color, $iconRadius: 50%);
+    }
+
+    &.linkedin .icon {
+      @include icon($icon-linkedin, $iconBgSize: 20px, $iconBg: transparent, $iconColor: $black, $iconHoverBg: transparent, $iconHoverColor: $action-color, $iconRadius: 50%);
+    }
+
+    &.website .icon {
+      @include icon($icon-website, $iconBgSize: 20px, $iconBg: transparent, $iconColor: $black, $iconHoverBg: transparent, $iconHoverColor: $action-color, $iconRadius: 50%);
+    }
+
+    &.twitter .icon {
+      @include icon($icon-twitter, $iconBgSize: 20px, $iconBg: transparent, $iconColor: $black, $iconHoverBg: transparent, $iconHoverColor: $action-color, $iconRadius: 50%);
+    }
+
+  }
+  @include bp(medium, up) {
+    .views-field-nothing {
+      white-space: nowrap;
+    }
+  }
+  @include bp(large, up) {
+    .views-field-title {
+      min-width: 220px;
+    }
+  }
+}
+
+.toolbar-icon-toggle-horizontal,
+.toolbar-icon-toggle-vertical {
+  z-index: 2;
+}

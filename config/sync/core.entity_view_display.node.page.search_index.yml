@@ -5,11 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.page.body
-    - field.field.node.page.field_main_image
+    - field.field.node.page.field_components
     - field.field.node.page.field_metatags
     - field.field.node.page.field_related_view
     - node.type.page
   module:
+    - entity_reference_revisions
     - text
     - user
     - viewfield
@@ -19,24 +20,32 @@ bundle: page
 mode: search_index
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_related_view:
-    weight: 1
+    type: viewfield_default
     label: hidden
     settings:
       view_title: hidden
       always_build_output: true
       empty_view_title: hidden
     third_party_settings: {  }
-    type: viewfield_default
+    weight: 2
     region: content
 hidden:
-  field_main_image: true
   field_metatags: true
   links: true
   search_api_excerpt: true

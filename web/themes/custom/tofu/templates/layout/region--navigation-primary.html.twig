@@ -12,8 +12,22 @@
 %}
 {% if content %}
   <div{{ attributes.addClass(classes) }}>
-    <div class="wrapper">
-    {{ content }}
+
+    {# Hamburger navigation panel  - full mobile menu including all Drupal menus (main, secondary, featured, etc) #}
+    <div id="navigation-panel">
+      <div class="wrapper__menu--main">{{ drupal_menu('main') }}</div>
+      <div class="grouped-menus">
+        <div class="wrapper__menu--secondary">{{ drupal_menu('secondary') }}</div>
+        <div class="wrapper__menu--featured">{{ drupal_menu('featured') }}</div>
+      </div>
     </div>
+
+
+    {# "Full Display" main navigation #}
+{#    <div id="full-display-navigation" class="margin-bottom-small">#}
+{#      <div class="wrapper">#}
+{#        {{ content }}#}
+{#      </div>#}
+{#    </div>#}
   </div>
 {% endif %}
