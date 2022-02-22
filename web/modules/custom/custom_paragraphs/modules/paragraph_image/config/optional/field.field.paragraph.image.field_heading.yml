@@ -9,6 +9,7 @@ field_name: field_heading
 entity_type: paragraph
 bundle: image
 label: Heading
+description: ''
 required: true
 translatable: true
 default_value: {  }

@@ -18,7 +18,9 @@ bundle: image
 mode: default
 content:
   field_caption:
+    type: text_textarea
     weight: 3
+    region: content
     settings:
       rows: 3
       placeholder: ''
@@ -26,38 +28,36 @@ content:
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
-    type: text_textarea
-    region: content
   field_custom_class:
+    type: string_textfield
     weight: 4
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_heading:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_heading_status:
+    type: boolean_checkbox
     weight: 1
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_image:
     type: media_library_widget
     weight: 2
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   status: true
