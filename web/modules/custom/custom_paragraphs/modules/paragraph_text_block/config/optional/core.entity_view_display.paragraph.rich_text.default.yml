@@ -9,25 +9,27 @@ dependencies:
     - paragraphs.paragraphs_type.rich_text
   module:
     - text
+_core:
+  default_config_hash: Jg17Crl_oPU4HkKQ7hLAWqnyGrnRdyU6GnoghjUZ5ys
 id: paragraph.rich_text.default
 targetEntityType: paragraph
 bundle: rich_text
 mode: default
 content:
   field_heading:
-    weight: 1
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: content
   field_text:
-    weight: 3
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 3
     region: content
 hidden:
   field_custom_class: true

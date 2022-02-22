@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.rich_text.field_heading_status
     - field.field.paragraph.rich_text.field_text
     - paragraphs.paragraphs_type.rich_text
+_core:
+  default_config_hash: JQHu3OG0hfFg-oREt1MOhBmWvPBnbLYB0PaIRxIWSRw
 id: paragraph.rich_text.preview
 targetEntityType: paragraph
 bundle: rich_text
@@ -15,12 +17,12 @@ mode: preview
 content:
   field_heading:
     type: string
-    weight: 1
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   field_custom_class: true
   field_heading_status: true
