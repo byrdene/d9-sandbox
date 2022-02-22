@@ -146,16 +146,101 @@
 
 // Tiles
 @mixin two-tiles($left: 50%, $right: 50%) {
-  .tiles-item {
-    float: none;
+  .tiles {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    @include bp(small, up) {
-      float: left;
-      &:nth-of-type(2n+1) { // First item
-        width: $left;
+
+    .tiles-item {
+      float: none;
+      width: 100%;
+
+      & + .tiles-item {
+        margin-top: $gutter;
       }
-      &:nth-of-type(2n+2) { // Last item
-        width: $right;
+
+      img { // make sure it fills container
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    @include bp(small, up) {
+      flex-direction: row;
+
+      .tiles-item {
+
+        & + .tiles-item {
+          margin-top: 0;
+        }
+
+        &:nth-of-type(2n+1) { // First item
+          width: $left;
+
+          &.text-wrapper {
+            padding: $gutter/2 $gutter 0 0;
+          }
+        }
+
+        &:nth-of-type(2n+2) { // Last item
+          width: $right;
+
+          &.text-wrapper {
+            padding: $gutter/2 0 0 $gutter;
+          }
+        }
+
+      }
+    }
+
+    @include bp(large, up) {
+      .tiles-item {
+        &:nth-of-type(2n+1) { // First item
+
+          &.text-wrapper {
+            padding: $gutter/2 $gutter*2 0 0;
+          }
+        }
+
+        &:nth-of-type(2n+2) { // Last item
+          &.text-wrapper {
+            padding: $gutter/2 0 0 $gutter*2;
+          }
+        }
+      }
+    }
+
+    &.alternating-layout {
+      @include bp(small, up) {
+        &:nth-child(odd) {
+          flex-direction: row;
+        }
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+
+          .tiles-item { // text needs its padding reversed if it is now on opposite side
+            &.text-wrapper {
+              padding: $gutter/2 $gutter 0 0;
+            }
+          }
+        }
+      }
+
+      @include bp(large, up) {
+        &:nth-child(odd) {
+          flex-direction: row;
+        }
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+
+          .tiles-item { // text needs its padding reversed if it is now on opposite side
+            &.text-wrapper {
+              padding: $gutter/2 $gutter*2 0 0;
+            }
+          }
+        }
       }
     }
   }

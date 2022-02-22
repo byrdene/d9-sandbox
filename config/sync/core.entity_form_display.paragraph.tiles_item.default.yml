@@ -10,30 +10,9 @@ dependencies:
     - paragraphs.paragraphs_type.tiles_item
   module:
     - allowed_formats
-    - field_group
     - link
     - media_library
     - text
-third_party_settings:
-  field_group:
-    group_content:
-      children:
-        - field_image
-        - field_item_heading
-        - field_text
-        - field_button
-      label: 'Tile Content'
-      region: content
-      parent_name: ''
-      weight: 0
-      format_type: details
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        open: false
-        description: ''
-        required_fields: true
 id: paragraph.tiles_item.default
 targetEntityType: paragraph
 bundle: tiles_item
