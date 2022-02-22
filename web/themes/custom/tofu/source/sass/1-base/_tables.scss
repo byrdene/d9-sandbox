@@ -102,7 +102,7 @@ table.cols-3 {
   }
 
   .responsive-table-cards tbody {
-    //border-top: 2px solid $seafoam;
+    //border-top: 2px solid $secondary-color;
   }
 
   /* Hide table headers (but not display: none;, for accessibility) */
@@ -130,7 +130,7 @@ table.cols-3 {
     & + td {
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid rgba(216, 219, 212, .5); //RGB for $cool-gray
+      border-top: 1px solid rgba(216, 219, 212, .5); //RGB for $cool-gray from HDTF
       &:before {
         top: 10px;
       }
@@ -177,78 +177,3 @@ a.tabledrag-handle .handle {
   width: 30px;
   height: 30px;
 }
-
-//// Table with DataTables plugin applied for responsive collapsing
-//table.dataTable.dtr-inline.collapsed > tbody > tr {
-//
-//  td, th {
-//    &:first-child:before {
-//      display: inline-block;
-//      @extend %icon-font;
-//      font-family: $icomoon;
-//      content: $icon-accordion-open;
-//      color: $action-color;
-//      width: 28px;
-//      height: 28px;
-//      text-align: center;
-//      line-height: 28px;
-//      margin: 0 5px 0 0;
-//      cursor: pointer;
-//    }
-//  }
-//
-//  &.parent {
-//    td, th {
-//      &:first-child:before {
-//        font-family: $icomoon;
-//        content: $icon-accordion-close;
-//      }
-//    }
-//  }
-//
-//  &.child {
-//    td, th {
-//      &:first-child:before {
-//        display: none;
-//      }
-//      ul  {
-//        list-style: none;
-//        margin: 0;
-//        padding: 0;
-//        li {
-//          margin-left: 0;
-//          &:before {
-//            content:"";
-//          }
-//        }
-//      }
-//      .dtr-title {
-//        @include font-weight(bold);
-//        margin-right: 5px;
-//        a {}
-//      }
-//    }
-//  }
-//}
-//
-//// Override default jQuery styling of headers
-//.dataTables_wrapper {
-//  .ui-widget-header {
-//    border: 0;
-//  }
-//  .ui-state-default {
-//    border: 0;
-//    .DataTables_sort_wrapper {
-//      // Remove the pointer cursor if "sort" is set to FALSE in jquery.responsiveTables.js
-//      // cursor: pointer;
-//      display: inline-block;
-//      white-space: nowrap;
-//      position: relative;
-//    }
-//    .ui-icon {
-//      display: inline-block;
-//      position: absolute;
-//      top: 3px;
-//    }
-//  }
-//}

@@ -13,7 +13,8 @@
   .caption-wrapper {
     display: block;
     @extend %caption;
-    padding: $gutter $gutter 0 $gutter;
+    //padding: $gutter $gutter 0 $gutter; if the image is full-width
+    padding: $gutter/2 0 0 $gutter;
     margin: 0;
     // // uncomment below for caption overlays and adjsut above padding
     //background-color: $primary-color;

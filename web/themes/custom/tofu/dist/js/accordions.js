@@ -1,2 +1,2 @@
 !function(t,a){var e,n=navigator.userAgent.match(/iPhone/i)?"touchstart":"click";e=".accordion__content",a(".accordion__button").each(function(){a(this).off(n).on(n,function(t){a(this).toggleClass("open").next(e).slideToggle("500"),a(this).hasClass("open")?a(this).attr("aria-expanded","true").next(e).attr("aria-hidden","false"):a(this).attr("aria-expanded","false").next(e).attr("aria-hidden","true")})}),a(e).hide()}(Drupal,jQuery);
-//# sourceMappingURL=tofu-accordions.js.map
+//# sourceMappingURL=accordions.js.map

@@ -16,11 +16,9 @@ global:
   js:
     dist/js/accessible-menus.js: {}
     dist/js/hamburger-menu.js: {}
-    dist/js/tofu-search.js: {}
-#    static/vendor/datatables/datatables.js: {}
-#    dist/js/tofu-responsiveTables.js: {}
-    dist/js/tofu-accordions.js: {}
-    dist/js/tofu-utilities.js: {}
+    dist/js/search.js: {}
+    dist/js/accordions.js: {}
+    dist/js/utilities.js: {}
   dependencies:
     - core/jquery
     - core/drupal
@@ -78,13 +76,3 @@ slick:
 #    dist/js/xxxxx.js {} # custom js file that utilizes the equalize plugin
 #  dependencies:
 #    - core/jquery
-
-#collapsed-content:
-#  version: VERSION
-#  js:
-#    dist/js/tofu-collapsed-content.js: {}
-#  dependencies:
-#    - core/jquery
-
-
-

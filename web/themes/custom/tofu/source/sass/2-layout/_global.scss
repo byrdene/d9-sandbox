@@ -95,6 +95,13 @@
   }
 }
 
+.margin-top-large {
+  margin-top: $gutter*2;
+  @include bp(medium, up) {
+    margin-top: $gutter*3;
+  }
+}
+
 .margin-top-small {
   margin-top: $gutter;
 }
@@ -136,13 +143,13 @@
 
 .section {
   & + .section {
-    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*2);
+    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*3);
   }
 }
 
 .component {
   & + .component {
-    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*2);
+    @include vertical-flow($mobile: $gutter*2, $desktop: $gutter*3);
   }
 }
 

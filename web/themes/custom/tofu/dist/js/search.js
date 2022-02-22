@@ -1,2 +1,2 @@
 !function(r){var s=navigator.userAgent.match(/iPhone/i)?"touchstart":"click";Drupal.behaviors.toggleSearch={attach:function(a){var t,e,i;t=r(".search-button"),e=r(".block-search .block-inner"),i=r("#hamburger"),t.each(function(){r(this).off(s).on(s,function(a){e.toggleClass("open"),e.hasClass("open")?(r(this).attr("aria-expanded","true"),e.attr("aria-hidden","false"),e.find(".form-item-search-api-fulltext > input").focus()):(r(this).attr("aria-expanded","false"),e.attr("aria-hidden","true")),i.hasClass("is-active")&&"block"===r("#hamburger-navigation").css("display")&&(r("#navigation-panel").slideUp(),i.removeClass("is-active"),i.setAttribute("aria-expanded","false"))})})}}}(jQuery);
-//# sourceMappingURL=tofu-search.js.map
+//# sourceMappingURL=search.js.map

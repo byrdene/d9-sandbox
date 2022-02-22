@@ -50,17 +50,17 @@ a[href] {
 
 .rte,
 .field--type-text-with-summary,
-.field--type-text {
-  a[href] {
+.field--type-text-long {
+  a[href]:not([class]) { // target plain text links without any kind of class
     color: $link-color;
     background-color: transparent;
     @include font-weight(normal);
-    text-decoration: none;
+    text-decoration: underline;
 
     &:hover,
     &:focus,
     &:active {
-      color: $link-color-hover;
+      color: $white;
       background-color: $link-color;
     }
 

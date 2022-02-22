@@ -7,7 +7,7 @@ header {
   #site-header {
     padding: $gutter;
     .region-header {}
-    .navigation-wrapper{
+    .navigation-wrapper {
       #navigation-panel {}
       .region-navigation-secondary {
         width: 100%;
@@ -100,9 +100,9 @@ header {
           }
         }
       }
-    }
+    } //tablet up
 
-    @include bp(wide-menu, up) {
+    @include bp(wide-menu, up) { // wide enough to ignore tablet compensations
       .region-header {}
       .navigation-wrapper {
         width: calc(100% - #{$logo-mx-desktop});

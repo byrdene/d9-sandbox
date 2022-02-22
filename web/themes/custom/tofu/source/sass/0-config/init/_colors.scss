@@ -3,28 +3,21 @@
 // ==========================================================================
 
 // Color palette specific to this site
-
-$logo-blue: #0A2854;
-$logo-green: #58A23E;
-$ultramarine: #003068;
-$dark-teal: #125473;
-$steel-blue: #4376B9;
-$lochmara: #0078BC; //action-blue in XD
+$navy: #003068;
+$cornflower: #0078BC;
 $seafoam: #D4ECF2;
-$cool-gray: #D8DBD4;
 
+// Always available
 $black:          #000000; // darkest
 $charcoal:       #15212C;
 $default-gray:   #A9A9A9;
 $ice:            #f2f2f2;
 $white:          #ffffff; // lightest
 
-
-// Admin colors (matches Tofu Gin settings)
+// Admin colors (matches Gin settings)
 $action-admin-color: #0A51E6;
 
 // Message colors
-
 $light-green:    #8dbe51;
 $mustard:        #ddc44f;
 $tomato:         #cd4533;

@@ -71,7 +71,7 @@
   }
   &__label {
     text-transform: uppercase;
-    color: $ultramarine;
+    color: $navy;
     @include font-size(16px);
     @include font-weight(semibold);
     @include tracking(40);
@@ -102,33 +102,6 @@
 .heading-wrapper {
   text-align: center;
   margin-bottom: $gutter;
-}
-
-.teaser-wrapper {
-  &.tiles {
-    @include two-tiles($left: 40%, $right: 60%);
-  }
-}
-
-.featured-wrapper {
-  .col-a,
-  .col-b {
-    float: none;
-    width: 100%;
-  }
-
-  @include bp(small, up) {
-    .col-a {
-      display: block;
-      width: 55%;
-      float: left;
-    }
-    .col-b {
-      display: block;
-      width: 45%;
-      float: left;
-    }
-  }
 }
 
 .toolbar-icon-toggle-horizontal,

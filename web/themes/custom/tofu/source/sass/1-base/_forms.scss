@@ -43,7 +43,7 @@ input[type="search"] {
   height: $form-item-height;
   line-height: $form-item-height;
   padding: $gutter/4 $gutter/2;
-  border: 1px solid $primary-color;
+  border: 1px solid $base-border-color;
   font-family: $base-font-family;
   @include font-size(14px);
   @include font-weight(normal);

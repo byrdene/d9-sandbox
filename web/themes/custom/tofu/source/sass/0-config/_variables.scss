@@ -44,11 +44,6 @@ $h4-font-size: 16px;
 $h5-font-size: 14px;
 $h6-font-size: 12px;
 
-// Teaser titles
-$teaser-title: 22px;
-$teaser-title-small: $base-font-size;
-$teaser-body: $base-font-size * .8;
-
 // Line height
 $base-line-height: 1.75;
 $heading-line-height: 1.4;
@@ -69,9 +64,9 @@ $base-focus-outline-color: $charcoal;
 //  * Colors
 //  ==========================================================================
 // Branding Colors
-$primary-color:  $ultramarine;
+$primary-color:  $navy;
 $secondary-color: $seafoam;
-$action-color: $lochmara;
+$action-color: $cornflower;
 
 // Font Colors
 $base-font-color: $black;
@@ -109,8 +104,8 @@ $dt-table-cell-border-width: 0 0 0 0;
 $dt-table-cell-border-style: solid;
 $dt-table-cell-border-color: $base-border-color;
 $dt-th-color: $primary-color;
-$dt-th-background-color: $seafoam;
-$dt-tr-odd-background-color: $cool-gray;
+$dt-th-background-color: $secondary-color;
+$dt-tr-odd-background-color: $ice;
 
 //  * Forms
 //  ==========================================================================
