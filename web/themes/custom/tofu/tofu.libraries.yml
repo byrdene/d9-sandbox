@@ -19,6 +19,7 @@ global:
     dist/js/tofu-search.js: {}
 #    static/vendor/datatables/datatables.js: {}
 #    dist/js/tofu-responsiveTables.js: {}
+    dist/js/tofu-accordions.js: {}
     dist/js/tofu-utilities.js: {}
   dependencies:
     - core/jquery

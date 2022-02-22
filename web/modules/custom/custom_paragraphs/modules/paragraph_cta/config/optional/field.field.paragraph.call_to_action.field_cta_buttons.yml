@@ -10,9 +10,9 @@ id: paragraph.call_to_action.field_cta_buttons
 field_name: field_cta_buttons
 entity_type: paragraph
 bundle: call_to_action
-label: 'CTA Buttons'
+label: 'CTA Button'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

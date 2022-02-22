@@ -15,3 +15,10 @@ slick:
     js/slick-init.js: {}
   dependencies:
     - core/jquery
+
+accordions:
+  version: VERSION
+  js:
+    js/accordions.js: {}
+  dependencies:
+    - core/jquery

@@ -1,17 +1,16 @@
+uuid: 52d9ae3b-90c1-4d5e-9493-785785279cd6
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_custom_class
-field_name: field_custom_class
+    - text
+id: paragraph.field_section_body
+field_name: field_section_body
 entity_type: paragraph
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true
