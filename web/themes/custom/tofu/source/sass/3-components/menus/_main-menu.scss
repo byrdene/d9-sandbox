@@ -114,7 +114,6 @@
         transition: all 0.5s ease;
 
         button, // for nolink menu items that start as buttons, jQuery or otherwise
-        > span, // for nolink menu items that start wrapped with <span>
         > a {
           color: $white;
           text-decoration: none;

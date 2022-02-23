@@ -11,12 +11,18 @@
   Drupal.behaviors.accessibleMenus = {
     attach: function (context) {
 
-      // Create the structure for the submenu accordions with buttons for toggling all the necessary aria attributes
-      $('#navigation-panel .wrapper__menu--main ul.menu li > span').each(function() {
+      $('#navigation-panel .wrapper__menu--main ul.menu li > button').each(function() {
+        var buttonText = "<span>" + $(this).text() + "</span>";
+        var linkIdentifier = $(this).text().replace(/\s+/g, '-').toLowerCase();
+
         $(this)
-          .wrap( "<button class='submenu__trigger' aria-expanded='false' aria-controls='" + $(this).text().replace(/\s+/g, '-').toLowerCase() + "-submenu' id='" + $(this).text().replace(/\s+/g, '-').toLowerCase() + "-submenu-controls'></button>" )
-          .parent().next('ul').attr('aria-hidden', 'true')
-          .attr('id', $(this).text().replace(/\s+/g, '-').toLowerCase() + '-submenu')
+          .html(buttonText)
+          .addClass('submenu__trigger')
+          .attr('aria-expanded', 'false')
+          .attr('aria-controls', linkIdentifier + '-submenu')
+          .attr('id', linkIdentifier + '-submenu-controls')
+          .next('ul').attr('aria-hidden', 'true')
+          .attr('id', linkIdentifier + '-submenu')
           .addClass('submenu');
       });
 
