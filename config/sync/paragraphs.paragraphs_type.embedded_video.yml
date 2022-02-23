@@ -1,0 +1,12 @@
+uuid: acc0808b-3b8e-4938-be26-cc2a9c45168a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ft-OB7bf-6J5fng-Xs9PDXpqIpcpnDd5GZl9ssIbFVA
+id: embedded_video
+label: 'Embedded Video'
+icon_uuid: null
+icon_default: null
+description: 'Embedded remote video (YouTube, Vimeo) with optional caption'
+behavior_plugins: {  }

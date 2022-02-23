@@ -1,0 +1,21 @@
+uuid: bf231e7b-824e-40c6-88f0-3ca04ec7fb70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_class
+    - paragraphs.paragraphs_type.embedded_video
+_core:
+  default_config_hash: jt9c2jzWv-OepPp7iL3UxAz4EU9LLF-Ll9imsaFgSUA
+id: paragraph.embedded_video.field_custom_class
+field_name: field_custom_class
+entity_type: paragraph
+bundle: embedded_video
+label: 'Custom Class(es)'
+description: 'Separate multiple class names with a single space. E.g. class1 class2 class3'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

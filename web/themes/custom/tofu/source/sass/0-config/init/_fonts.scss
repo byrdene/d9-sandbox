@@ -6,7 +6,7 @@
   @font-face{
     font-family: $fontName;
     src: url($fontPath +'.eot');
-    src: url($fontPath +'.eot?iefix') format('eot'),
+    src: url($fontPath +'.eot?iefix') format('embedded-opentype'),
     url($fontPath +'.woff') format('woff'),
     url($fontPath +'.woff2') format('woff2'),
     url($fontPath +'.ttf') format('truetype'),
@@ -16,7 +16,6 @@
     font-display: swap;
   };
 }
-
 // Custom ICO Moon Font
 @include add-font(
         $fontName: 'ICO Moon',

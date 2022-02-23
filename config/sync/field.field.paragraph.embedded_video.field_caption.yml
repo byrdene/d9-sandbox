@@ -1,0 +1,28 @@
+uuid: cb28745d-660c-4d65-b56e-cead65955283
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - paragraphs.paragraphs_type.embedded_video
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+_core:
+  default_config_hash: '-_5tocYUOnFOJjjCm-xWmjiSkypQPFW08xS9rqD_pBs'
+id: paragraph.embedded_video.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: embedded_video
+label: 'Optional Video Caption'
+description: 'Useful for adding a link to a PDF transcript of the video.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -30,6 +30,7 @@ ol, ul {
 // Bulleted lists created in the RTE
 .rte,
 .field--type-text-with-summary,
+.field--type-text-long,
 .field--type-text {
   ul:not(.contextual-links):not(.pager__items):not(.pager):not(.menu):not(.js-tablist) {
     list-style: none;
@@ -39,7 +40,7 @@ ol, ul {
         display: block;
         position: absolute;
         font-size: .6em; // adjust size for actual icon in the font file
-        top: 4px; // adjust for font size used
+        top: 6px; // adjust for font size used
         left: 0;
         margin-left: -18px; // this is right padding set on the parent ul
         font-family: $icomoon;

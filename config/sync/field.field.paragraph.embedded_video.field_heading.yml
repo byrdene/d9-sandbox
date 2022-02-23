@@ -1,0 +1,21 @@
+uuid: ba8e4107-b2e8-44d5-9d77-e0fd3f4894de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.embedded_video
+_core:
+  default_config_hash: 54S4AYNIEGne9E6iU-GpqdXg_q31NWEd7arK2oi0U1M
+id: paragraph.embedded_video.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: embedded_video
+label: Heading
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
