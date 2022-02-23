@@ -1,0 +1,10 @@
+name: 'Paragraph - Callout'
+type: module
+core_version_requirement: '^8.9 || ^9'
+package: Custom
+description: 'Paragraph bundle for callout text'
+dependencies:
+  - allowed_formats
+  - field
+  - paragraphs
+  - text

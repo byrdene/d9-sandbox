@@ -4,16 +4,6 @@
 
 // Background classes
 .bg {
-  &__primary-color {
-    background-color: $primary-color;
-    color: $white;
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    a[href] {
-      color: $white !important;
-    }
-  }
   &__ice {
     background-color: $ice;
     color: $base-font-color;
@@ -37,6 +27,16 @@
     h4, .h4,
     a[href] {
       color: $white !important;
+    }
+    a[href] {
+      &:hover {
+        background-color: $white !important;
+        color: $primary-color !important;
+      }
+      &:focus {
+        @include focus-outline($color: $white);
+        color: $primary-color !important;
+      }
     }
     a:not(.button__outlined-white) {
       text-decoration: underline;

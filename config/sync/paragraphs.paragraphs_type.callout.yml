@@ -1,0 +1,12 @@
+uuid: b0bc4c62-c93c-4ec4-a5a7-33a9aed880cd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: oy6nwN8pkYxO3EsAULidsoK9VVjY_gS1sgOphGTER7A
+id: callout
+label: Callout
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
