@@ -144,6 +144,63 @@
   }
 }
 
+// Accordions
+@mixin accordion() {
+  .accordion {
+    width: 100%;
+
+    &__button {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background-color: $ice;
+      text-align: left;
+      cursor: pointer;
+
+      .accordion-title {
+        color: $primary-color;
+        padding: $gutter/2 $gutter*2 $gutter/2 $gutter; // for icon on right
+        //padding: $gutter/2 $gutter $gutter/2 $gutter*2; // for icon on left
+        margin: 0;
+        position: relative;
+        &:before {
+          position: absolute;
+          top: $gutter/2;
+          right: 0; // for icon on right
+          //left: 0; // for icon on left
+          width: 40px;
+          font-family: $icomoon;
+          content: $icon-plus;
+          color: $primary-color;
+          font-size: 18px;
+          text-align: center;
+        }
+      }
+
+      &:hover {
+        background-color: darken($ice, 10%);
+      }
+
+      &:focus {
+        @include focus-outline();
+      }
+
+      &.open {
+        .accordion-title {
+          &:before {
+            content: $icon-minus;
+          }
+        }
+      }
+    }
+
+    &__content {
+      display:none;
+      padding: $gutter/2 $gutter;
+    }
+  }
+}
+
 // Tiles
 @mixin two-tiles($left: 50%, $right: 50%) {
   .tiles {

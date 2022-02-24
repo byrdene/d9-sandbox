@@ -18,7 +18,7 @@ table {
   thead tr th.ui-state-default {
     border: none;
     @include font-weight(semibold);
-    padding: $gutter;
+    padding: $gutter/2 $gutter;
     line-height: 1.15;
     text-align: left;
     text-transform: uppercase;
@@ -34,6 +34,7 @@ table {
       background-color: transparent;
     }
     &.odd {
+      // uncomment below if striping
       background-color: $dt-tr-odd-background-color;
     }
   }
@@ -42,7 +43,7 @@ table {
     border-width: $dt-table-cell-border-width;
     border-color: $dt-table-cell-border-color;
     border-style: $dt-table-cell-border-style;
-    padding: $gutter;
+    padding: $gutter/2 $gutter;
     line-height: 1.15;
     @include font-size($table-cell-font-size);
     *:first-child {

@@ -95,17 +95,17 @@ $tab-text: $white;
 //  * Tables
 //  ==========================================================================
 // All tables
-$table-cell-font-size: $base-font-size;
+$table-cell-font-size: $base-font-size * .8;
 $dt-table-border-width: 0 0 0 0;
 $dt-table-border-style: solid;
 $dt-table-border-color: $base-border-color;
-//$dt-table-cell-border-width: 0 0 1px 0;
-$dt-table-cell-border-width: 0 0 0 0;
+$dt-table-cell-border-width: 0 0 1px 0;
+//$dt-table-cell-border-width: 0 0 0 0;
 $dt-table-cell-border-style: solid;
 $dt-table-cell-border-color: $base-border-color;
-$dt-th-color: $primary-color;
-$dt-th-background-color: $secondary-color;
-$dt-tr-odd-background-color: $ice;
+$dt-th-color: $white;
+$dt-th-background-color: $primary-color;
+$dt-tr-odd-background-color: $ice; //for striping
 
 //  * Forms
 //  ==========================================================================
